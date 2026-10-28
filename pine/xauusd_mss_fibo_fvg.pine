@@ -1,0 +1,254 @@
+//@version=6
+// ============================================================================
+//  XAUUSD – MSS + Fibonacci + Retest + Confirmation FVG
+// ----------------------------------------------------------------------------
+//  1. MSS   : clôture au-delà du dernier swing opposé à la tendance en cours
+//  2. Fibo  : tracé du début de l'impulsion (100 %) à sa fin (0 %)
+//  3. Retest: le prix revient dans la zone Fibo (par défaut 0.618 – 0.786)
+//  4. FVG   : un Fair Value Gap dans le sens du MSS se forme après le retest
+//             -> entrée à la clôture de la bougie qui valide le FVG
+// ============================================================================
+strategy("XAUUSD – MSS + Fibo + Retest + FVG", shorttitle = "XAU MSS/FVG", overlay = true,
+     initial_capital = 10000, pyramiding = 0, process_orders_on_close = true,
+     commission_type = strategy.commission.cash_per_contract, commission_value = 0.0, slippage = 3,
+     max_bars_back = 500, max_lines_count = 500, max_boxes_count = 500, max_labels_count = 500)
+
+// ───────────────────────────── Paramètres ─────────────────────────────
+grpS = "1. Structure (MSS)"
+pivotLen  = input.int(5, "Longueur des swings (pivots)", minval = 1, group = grpS)
+allowBOS  = input.bool(false, "Accepter aussi les BOS (continuation)", group = grpS)
+atrLen    = input.int(14, "Période ATR", minval = 1, group = grpS)
+minImpAtr = input.float(1.5, "Impulsion minimale (x ATR)", minval = 0, step = 0.1, group = grpS)
+
+grpF = "2. Fibonacci & retest"
+fibA        = input.float(0.618, "Zone de retest : niveau 1", step = 0.001, group = grpF)
+fibB        = input.float(0.786, "Zone de retest : niveau 2", step = 0.001, group = grpF)
+extendImp   = input.bool(true, "Prolonger la fin de l'impulsion tant que la zone n'est pas touchée", group = grpF)
+setupExpiry = input.int(50, "Expiration si pas de retest (barres)", minval = 1, group = grpF)
+
+grpV = "3. Confirmation FVG"
+fvgWindow   = input.int(10, "Délai max après le retest (barres)", minval = 1, group = grpV)
+fvgMinAtr   = input.float(0.05, "Taille min. du FVG (x ATR)", minval = 0, step = 0.05, group = grpV)
+fvgFromZone = input.bool(true, "Le FVG doit partir de la zone", group = grpV)
+
+grpR = "4. Gestion du risque"
+slMode   = input.string("Extrême du retest", "Stop loss", options = ["Extrême du retest", "Origine de l'impulsion (Fibo 1)"], group = grpR)
+slBufAtr = input.float(0.2, "Marge du SL (x ATR)", minval = 0, step = 0.05, group = grpR)
+tpMode   = input.string("Ratio R:R", "Take profit", options = ["Ratio R:R", "Extension Fibo", "Fin de l'impulsion (Fibo 0)"], group = grpR)
+rrTarget = input.float(2.0, "R:R cible (mode Ratio R:R)", minval = 0.1, step = 0.1, group = grpR)
+tpExt    = input.float(0.272, "Extension Fibo (0.272 = niveau -0.272)", minval = 0, step = 0.001, group = grpR)
+minRR    = input.float(1.5, "R:R minimum pour prendre le trade", minval = 0, step = 0.1, group = grpR)
+riskPct  = input.float(1.0, "Risque par trade (% du capital)", minval = 0.01, step = 0.1, group = grpR)
+qtyStep  = input.float(0.01, "Pas de quantité", minval = 0.0001, group = grpR)
+
+grpX = "5. Filtres"
+useLong  = input.bool(true, "Trades acheteurs", group = grpX)
+useShort = input.bool(true, "Trades vendeurs", group = grpX)
+useSess  = input.bool(true, "Filtre de session", group = grpX)
+sessStr  = input.session("0800-1800", "Session (Londres + New York)", group = grpX)
+sessTz   = input.string("Europe/Paris", "Fuseau horaire", group = grpX)
+
+grpD = "6. Affichage"
+showFibo = input.bool(true, "Afficher le Fibo et la zone", group = grpD)
+showMSS  = input.bool(true, "Afficher les MSS", group = grpD)
+showFVG  = input.bool(true, "Afficher le FVG de confirmation", group = grpD)
+colBull  = input.color(color.teal, "Couleur achat", group = grpD)
+colBear  = input.color(color.red, "Couleur vente", group = grpD)
+
+// ───────────────────────────── Fonctions ─────────────────────────────
+// Niveau Fibo tracé de l'origine (1) vers la fin de l'impulsion (0).
+// r < 0 donne une extension au-delà de la fin de l'impulsion.
+fibLevel(float origin, float end, float r) => end - (end - origin) * r
+
+// ───────────────────────────── Structure ─────────────────────────────
+atr       = ta.atr(atrLen)
+ph        = ta.pivothigh(high, pivotLen, pivotLen)
+pl        = ta.pivotlow(low, pivotLen, pivotLen)
+inSession = not useSess or not na(time(timeframe.period, sessStr, sessTz))
+
+var float shPrice  = na
+var int   shBar    = na
+var bool  shBroken = true
+var float slPrice  = na
+var int   slBar    = na
+var bool  slBroken = true
+var int   trend    = 0   // 1 haussier, -1 baissier, 0 inconnu
+
+if not na(ph)
+    shPrice  := ph
+    shBar    := bar_index - pivotLen
+    shBroken := false
+if not na(pl)
+    slPrice  := pl
+    slBar    := bar_index - pivotLen
+    slBroken := false
+
+// ───────────────────────────── État du setup ─────────────────────────────
+var int   dir       = 0     // 1 achat, -1 vente, 0 aucun setup
+var float orig      = na    // début de l'impulsion (Fibo 1)
+var float impEnd    = na    // fin de l'impulsion (Fibo 0)
+var int   origBar   = na
+var int   setupBar  = na
+var bool  touched   = false
+var int   touchBar  = na
+var float retestExt = na    // extrême atteint pendant le retest
+
+var levels   = array.from(0.0, 0.5, 0.618, 0.705, 0.786, 1.0)
+var fibLines = array.new<line>()
+var box zoneBox = na
+
+int  newDir   = 0
+bool newIsMSS = false
+
+if not shBroken and not na(shPrice) and close > shPrice
+    shBroken := true
+    if dir == -1
+        dir := 0
+    if (trend == -1 or allowBOS) and useLong
+        newDir   := 1
+        newIsMSS := trend == -1
+    trend := 1
+
+if not slBroken and not na(slPrice) and close < slPrice
+    slBroken := true
+    if dir == 1
+        dir := 0
+    if (trend == 1 or allowBOS) and useShort
+        newDir   := -1
+        newIsMSS := trend == 1
+    trend := -1
+
+// ───────────────────────────── Nouveau MSS -> Fibo ─────────────────────────────
+if newDir != 0
+    isLong      = newDir == 1
+    brokenBar   = isLong ? shBar : slBar
+    brokenPrice = isLong ? shPrice : slPrice
+    // Début de l'impulsion : extrême opposé entre le swing cassé et la cassure
+    o    = isLong ? low : high
+    oBar = bar_index
+    for i = 0 to math.min(bar_index - brokenBar, 400)
+        p = isLong ? low[i] : high[i]
+        if isLong ? p < o : p > o
+            o    := p
+            oBar := bar_index - i
+    // Fin de l'impulsion : extrême atteint depuis le début de l'impulsion
+    e = isLong ? high : low
+    for i = 0 to bar_index - oBar
+        p = isLong ? high[i] : low[i]
+        if isLong ? p > e : p < e
+            e := p
+
+    if math.abs(e - o) >= minImpAtr * atr
+        dir       := newDir
+        orig      := o
+        impEnd    := e
+        origBar   := oBar
+        setupBar  := bar_index
+        touched   := false
+        touchBar  := na
+        retestExt := na
+        col = isLong ? colBull : colBear
+
+        if showMSS
+            line.new(brokenBar, brokenPrice, bar_index, brokenPrice, color = col, style = line.style_dashed)
+            label.new(bar_index, brokenPrice, newIsMSS ? "MSS" : "BOS", color = color.new(col, 100), textcolor = col,
+                 style = isLong ? label.style_label_down : label.style_label_up, size = size.small)
+
+        if showFibo
+            array.clear(fibLines)  // les anciens tracés restent visibles mais ne sont plus mis à jour
+            for r in levels
+                y = fibLevel(o, e, r)
+                array.push(fibLines, line.new(oBar, y, bar_index, y, color = color.new(color.gray, 30),
+                     style = r == 0.0 or r == 1.0 ? line.style_solid : line.style_dotted))
+            zA = fibLevel(o, e, fibA)
+            zB = fibLevel(o, e, fibB)
+            zoneBox := box.new(oBar, math.max(zA, zB), bar_index, math.min(zA, zB), border_color = color.new(col, 60),
+                 bgcolor = color.new(col, 85), text = str.format("{0} – {1}", fibA, fibB), text_size = size.small,
+                 text_color = col, text_halign = text.align_right)
+
+// ───────────────────────────── Retest + FVG ─────────────────────────────
+bool entrySignal = false
+bool cancel      = false
+
+if dir != 0 and bar_index > setupBar
+    isLong = dir == 1
+    if not touched and extendImp and (isLong ? high > impEnd : low < impEnd)
+        impEnd := isLong ? high : low
+    zNear = fibLevel(orig, impEnd, math.min(fibA, fibB))
+
+    if isLong ? low < orig : high > orig
+        cancel := true  // l'origine de l'impulsion est cassée : setup invalidé
+    else
+        if not touched and (isLong ? low <= zNear : high >= zNear)
+            touched   := true
+            touchBar  := bar_index
+            retestExt := isLong ? low : high
+        if touched
+            retestExt := isLong ? math.min(retestExt, low) : math.max(retestExt, high)
+            bullFvg  = low > high[2] and close[1] > open[1] and low - high[2] >= fvgMinAtr * atr
+            bearFvg  = high < low[2] and close[1] < open[1] and low[2] - high >= fvgMinAtr * atr
+            fromZone = not fvgFromZone or (isLong ? math.min(low[1], low[2]) <= zNear : math.max(high[1], high[2]) >= zNear)
+            if (isLong ? bullFvg : bearFvg) and fromZone and bar_index > touchBar and inSession and strategy.position_size == 0
+                entrySignal := true
+            else if bar_index - touchBar >= fvgWindow
+                cancel := true
+        else if bar_index - setupBar > setupExpiry
+            cancel := true
+
+// ───────────────────────────── Entrée ─────────────────────────────
+if entrySignal
+    isLong = dir == 1
+    buf    = slBufAtr * atr
+    slRef  = slMode == "Extrême du retest" ? retestExt : orig
+    sl     = isLong ? slRef - buf : slRef + buf
+    entry  = close
+    risk   = math.abs(entry - sl)
+    float tp = switch tpMode
+        "Ratio R:R"      => isLong ? entry + risk * rrTarget : entry - risk * rrTarget
+        "Extension Fibo" => fibLevel(orig, impEnd, -tpExt)
+        => impEnd
+    reward = isLong ? tp - entry : entry - tp
+
+    if risk > 0 and reward / risk >= minRR
+        qty = math.floor(strategy.equity * riskPct / 100 / (risk * syminfo.pointvalue) / qtyStep) * qtyStep
+        if qty > 0
+            id = isLong ? "Achat" : "Vente"
+            strategy.entry(id, isLong ? strategy.long : strategy.short, qty = qty)
+            strategy.exit(id + " SL/TP", id, stop = sl, limit = tp)
+            alert(str.format("XAUUSD {0} | entrée {1} | SL {2} | TP {3}", id, entry, sl, tp), alert.freq_once_per_bar_close)
+            if showFVG
+                col = isLong ? colBull : colBear
+                box.new(bar_index - 2, isLong ? low : low[2], bar_index + 3, isLong ? high[2] : high,
+                     border_color = col, bgcolor = color.new(col, 70), text = "FVG", text_size = size.tiny, text_color = col)
+                line.new(bar_index, sl, bar_index + 10, sl, color = color.red, width = 2)
+                line.new(bar_index, tp, bar_index + 10, tp, color = color.green, width = 2)
+    dir := 0  // setup consommé
+
+if cancel
+    dir := 0
+    if showFibo and not na(zoneBox)
+        box.set_bgcolor(zoneBox, color.new(color.gray, 85))
+        box.set_border_color(zoneBox, color.new(color.gray, 60))
+
+// Mise à jour du Fibo tant que le setup est actif
+if dir != 0 and showFibo
+    for [i, ln] in fibLines
+        y = fibLevel(orig, impEnd, array.get(levels, i))
+        line.set_y1(ln, y)
+        line.set_y2(ln, y)
+        line.set_x2(ln, bar_index)
+    zA = fibLevel(orig, impEnd, fibA)
+    zB = fibLevel(orig, impEnd, fibB)
+    box.set_top(zoneBox, math.max(zA, zB))
+    box.set_bottom(zoneBox, math.min(zA, zB))
+    box.set_right(zoneBox, bar_index)
+
+// ───────────────────────────── Tableau d'état ─────────────────────────────
+var table panel = table.new(position.top_right, 2, 2, bgcolor = color.new(color.black, 80), border_width = 1)
+if barstate.islast
+    sens   = dir == 1 ? "Achat" : dir == -1 ? "Vente" : "—"
+    status = dir == 0 ? "Attente d'un MSS" : not touched ? "MSS ✓ → attente du retest" : "Retest ✓ → attente du FVG"
+    table.cell(panel, 0, 0, "Sens", text_color = color.white)
+    table.cell(panel, 1, 0, sens, text_color = dir == 1 ? colBull : dir == -1 ? colBear : color.white)
+    table.cell(panel, 0, 1, "Étape", text_color = color.white)
+    table.cell(panel, 1, 1, status, text_color = color.white)
