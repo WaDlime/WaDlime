@@ -20,8 +20,8 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 00 Fondations · 01 Recherche produit · 02 Sourcing & négo · 03 Expédition & Incoterms · 04 **Douane PF (module phare)** · 05 Réception & express · 06 Pricing & marge · 07 Marketing FB/IG/TikTok · 08 IA pour le marketing · 09 Canaux de vente & site · 10 Livraison locale · 11 Service client & rachat · 12 Fiscalité & création · 13 Systématiser & scaler.
 
 ## Règles de contenu à respecter (important)
-1. **Douane et fiscalité (modules 04 et 12) : exactitude avant tout.** Faits vérifiés sur sources officielles (Douane PF, DICP, CCISM) : entreprise = pas de franchise, taxée dès le 1er franc ; TVA 16 % (5 % denrées de base) ; TDL ; système FENIX (déclaration par commissionnaire en douane, ou par soi-même avec convention) ; régime TPE / franchise de TVA jusqu'à 10 M XPF de CA ; pas d'impôt général sur le revenu en PF ; parcours CFE (CCISM) → ISPF → DICP.
-   - Les taux et seuils changent : toujours renvoyer au **simulateur officiel de la douane PF**, à la CCISM et à la DICP.
+1. **Douane et fiscalité (modules 04 et 12) : exactitude avant tout.** Faits vérifiés sur sources officielles (Douane PF, DICP, CCISM) : entreprise = pas de franchise, taxée dès le 1er franc ; TVA 16 % sur la plupart des marchandises (5 % alimentaire, 0 % certains PPN ; 13 % = services), calculée en cascade sur CAF + droits + autres taxes ; TDL sur certains produits ; franchise colis réservée aux particuliers (usage perso et occasionnel, 20 000 XPF, vérifié 11/2026) ; système FENIX (FENua Import eXport, depuis 2019 ; déclaration par commissionnaire en douane, ou par soi-même avec convention) ; régime TPE / franchise de TVA jusqu'à 10 M XPF de CA ; pas d'impôt général sur le revenu en PF ; parcours CFE (CCISM) → ISPF → DICP.
+   - Les taux et seuils changent : toujours renvoyer au **simulateur des droits et taxes** (lien sur le site de la douane PF, service-public.pf/douane), à la CCISM et à la DICP.
    - Les fourchettes (ex. « +25 à +40 % de taxes ») sont des ordres de grandeur, jamais des garanties.
    - Le créateur n'est ni douanier ni conseiller fiscal : le dire dans les vidéos.
 2. **Éthique** : jamais de sous-déclaration en douane, de contrefaçon, de faux avis ni de visuels IA trompeurs.
@@ -38,7 +38,8 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - [x] Plateforme React gamifiée (V1)
 - [x] 14 scripts vidéo complets
 - [x] Module 00 converti en version voix IA (à tester par l'utilisateur)
-- [ ] Convertir les modules 01 à 13 en version voix IA (après validation du test du module 00)
+- [x] Module 04 converti en version voix IA, faits douane revérifiés sur sources officielles (11/2026), script vidéo 04 corrigé
+- [ ] Convertir les modules 01-03 et 05 à 13 en version voix IA
 - [ ] Créer les outils 🎁 (calculatrice de rentabilité, grille de scoring /100, modèles de messages fournisseur, comparateur de devis, mémo douane, checklists, bibliothèque de prompts, grille de livraison, scripts SAV, dashboard KPI, roadmap 90 jours)
 - [ ] Page de vente (offre 3 niveaux, garantie, bonus, preuve sociale)
 - [ ] Brancher les vraies vidéos et les outils sur la plateforme

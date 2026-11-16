@@ -40,7 +40,7 @@
 **[ÉCRAN]** `En entreprise : AUCUNE franchise. Taxé dès le 1er franc.`
 
 **[CAM]**
-> « Quand tu voyages et que tu ramènes des trucs dans ta valise, en tant que particulier, tu as des "franchises" — des seuils en dessous desquels tu paies rien. Genre tant de milliers de francs sans taxe.
+> « Quand tu commandes un truc perso, en tant que particulier, tu as une "franchise" : un colis pour ton usage perso, de temps en temps, jusqu'à 20 000 francs de valeur, tu paies rien. Au-dessus, c'est une taxation forfaitaire (seuils à revérifier sur le site de la douane PF).
 >
 > Beaucoup de débutants pensent que ça marche pareil quand ils importent pour revendre. FAUX. »
 
@@ -50,7 +50,7 @@
 > Ça veut dire quoi concrètement ? Que si t'as pas intégré ces taxes dans ton prix de vente dès le départ, tu vends à perte sans même le savoir. »
 
 **[ÉCRAN — à retenir]**
-`✦ Voyageur = franchises · ENTREPRISE = taxé dès 1 franc`
+`✦ Particulier (perso, occasionnel) = franchise · ENTREPRISE = taxé dès 1 franc`
 `✦ Déclaration d'import OBLIGATOIRE`
 `✦ Intègre les taxes dans ton prix DÈS le début`
 
@@ -101,19 +101,20 @@
 1. DROITS DE DOUANE (DD)
    → variables selon le produit (son "code douanier")
 
-2. TVA
-   → 16 % taux normal
-   → 5 % produits de 1ère nécessité (alimentaire de base)
-
-3. TDL — Taxe de Développement Local
+2. TDL — Taxe de Développement Local
    → protège certaines productions locales
    → s'applique sur certains produits importés
+
+3. TVA
+   → 16 % taux normal (la plupart des marchandises)
+   → 5 % alimentaire · 0 % certains PPN
+   → calculée sur valeur CAF + droits + autres taxes (ça s'empile)
 ```
 
 **[CAM] — [TON : pédagogue]**
 > « Les droits de douane, ça dépend de ton produit. Chaque type de marchandise a un code — j'y reviens dans deux minutes — et chaque code a son taux. Une montre, un t-shirt, un accessoire tech : pas les mêmes droits.
 >
-> La TVA, elle, c'est 16 % sur la quasi-totalité des produits. Seule l'alimentaire de base est à 5 %.
+> La TVA, elle, c'est 16 % sur la plupart des marchandises. L'alimentaire est à 5 %, et certains produits de première nécessité à 0 %. Et attention : la TVA se calcule sur ta valeur en douane PLUS les droits déjà payés. Tu paies de la taxe sur de la taxe.
 >
 > Et la TDL, c'est une taxe qui protège ce qui est produit localement. Elle touche certains produits importés. »
 
@@ -123,7 +124,7 @@
 > C'est ÉNORME. C'est exactement pour ça qu'il faut l'anticiper. Un produit acheté 1 000, transport inclus, peut te revenir à 1 300-1 400 une fois sorti de la douane. »
 
 **[ÉCRAN — à retenir]**
-`✦ DD (selon produit) + TVA 16 % + TDL`
+`✦ DD (selon produit) + TDL (certains produits) + TVA 16 % calculée sur le tout`
 `✦ Ordre de grandeur : +25 à +40 % — À VÉRIFIER par produit`
 
 **[CAM] — [important]**
@@ -138,7 +139,7 @@
 *But : expliquer FENIX et les 2 options de déclaration.*
 
 **[CAM]**
-> « En Polynésie, toutes les formalités douanières passent par un système qui s'appelle FENIX — Fenua Import Export. C'est la plateforme officielle. »
+> « En Polynésie, depuis 2019, les déclarations en douane passent par un système qui s'appelle FENIX — FENua Import eXport. C'est la plateforme officielle. »
 
 **[ÉCRAN]** `FENIX = Fenua Import Export · le système officiel de dédouanement`
 
@@ -167,7 +168,7 @@
 *But : la compétence pro = utiliser le code SH et le simulateur.*
 
 **[CAM] — [TON : tu donnes une vraie compétence]**
-> « Chaque produit au monde a un code de nomenclature douanière. On appelle ça le code SH. C'est ce code qui détermine tes droits de douane et les éventuelles formalités spéciales — normes, autorisations. »
+> « Chaque produit au monde a un code de nomenclature douanière. On appelle ça le code SH — ici, 8 chiffres. C'est ce code qui détermine tes droits de douane et les éventuelles formalités spéciales — normes, autorisations. »
 
 **[CAM]**
 > « Pourquoi c'est important pour toi ? Parce qu'avec ce code, tu peux estimer tes taxes AVANT même de commander. Tu sais si ton produit est rentable ou pas, avant de dépenser un franc. »
