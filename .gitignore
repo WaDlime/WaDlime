@@ -14,3 +14,5 @@ __pycache__/
 07-production/assets_v3/*_raw.png
 07-production/assets_v3/chk_*.png
 07-production/assets_v3/mascottes/*_raw.png
+check/
+frames/
