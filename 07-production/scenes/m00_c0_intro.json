@@ -1,0 +1,122 @@
+{
+ "slug": "m00_c0_intro",
+ "where": "Module 00 · Clip 0.0",
+ "voice_from": {
+  "file": "../../06-formation/Module_00_Fondations.md",
+  "clip": 0
+ },
+ "beats": [
+  {
+   "slide": {
+    "type": "title",
+    "eyebrow": "Module 00 · Clip 0.0",
+    "title": "Les fondations",
+    "subtitle": "Avant de dépenser un seul franc",
+    "note": "Voix off générée par IA"
+   }
+  },
+  {
+   "at": "Moi, c'est Naikishan",
+   "slide": {
+    "type": "statement",
+    "label": "Ton formateur",
+    "text": "Moi, c'est **Naikishan**.",
+    "sub": "J'importe de Chine et je revends au fenua."
+   }
+  },
+  {
+   "at": "Et dans cette formation",
+   "slide": {
+    "type": "statement",
+    "label": "Ici",
+    "text": "Pas de théorie que tu trouves **gratuite** sur Google."
+   }
+  },
+  {
+   "at": "Je vais te montrer EXACTEMENT",
+   "slide": {
+    "type": "bullets",
+    "heading": "Comment ça marche, ici",
+    "items": [
+     "La douane de Tahiti",
+     "Les fournisseurs chinois",
+     "Le marketing qui marche au fenua"
+    ],
+    "reveal": 0
+   }
+  },
+  {
+   "at": "La douane de Tahiti",
+   "slide": {
+    "type": "bullets",
+    "heading": "Comment ça marche, ici",
+    "items": [
+     "La douane de Tahiti",
+     "Les fournisseurs chinois",
+     "Le marketing qui marche au fenua"
+    ],
+    "reveal": 1
+   }
+  },
+  {
+   "at": "Les fournisseurs chinois",
+   "slide": {
+    "type": "bullets",
+    "heading": "Comment ça marche, ici",
+    "items": [
+     "La douane de Tahiti",
+     "Les fournisseurs chinois",
+     "Le marketing qui marche au fenua"
+    ],
+    "reveal": 2
+   }
+  },
+  {
+   "at": "Le marketing qui convertit",
+   "slide": {
+    "type": "bullets",
+    "heading": "Comment ça marche, ici",
+    "items": [
+     "La douane de Tahiti",
+     "Les fournisseurs chinois",
+     "Le marketing qui marche au fenua"
+    ],
+    "reveal": 3
+   }
+  },
+  {
+   "at": "Du concret",
+   "slide": {
+    "type": "statement",
+    "text": "Du **concret**."
+   }
+  },
+  {
+   "at": "Mais avant de dépenser un SEUL franc",
+   "slide": {
+    "type": "statement",
+    "label": "Avant de dépenser un seul franc",
+    "text": "Le truc que la plupart des débutants **zappent**…",
+    "sub": "…et qui leur fait perdre de l'argent dès la première commande."
+   }
+  },
+  {
+   "at": "Ce module, c'est les fondations",
+   "slide": {
+    "type": "retenir",
+    "label": "Module 00",
+    "lines": [
+     "Les **fondations**.",
+     "Fais-les à fond : tout le reste devient logique."
+    ]
+   }
+  },
+  {
+   "at": "Allez. On y va",
+   "slide": {
+    "type": "end",
+    "title": "La chaîne de valeur"
+   }
+  }
+ ]
+}

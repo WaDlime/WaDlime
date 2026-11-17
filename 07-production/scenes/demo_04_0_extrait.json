@@ -1,0 +1,14 @@
+{
+  "slug": "demo_04-0_extrait",
+  "where": "Module 04 · Clip 4.0",
+  "voice": "[posé, un peu grave] Si tu dois retenir UN seul module de toute cette formation... c'est celui-là.\n\n[ton direct] Parce que c'est là que tout le monde se plante. Les formations que tu trouves en ligne, elles sont faites pour la France... ou pour les États-Unis. [temps] Elles parlent JAMAIS de notre douane.\n\n[ton qui s'affirme] Et notre douane, à Tahiti... elle a ses propres règles. Ses propres taxes. Son propre système.",
+  "beats": [
+    {"slide": {"type": "title", "eyebrow": "Module 04 · Clip 4.0", "title": "La douane polynésienne", "subtitle": "Le module qui vaut le prix de la formation"}},
+    {"at": "Parce que c'est là que tout le monde se plante", "slide": {"type": "statement", "label": "Le problème", "text": "Les formations en ligne sont faites pour la **France**… ou les **États-Unis**."}},
+    {"at": "Elles parlent JAMAIS de notre douane", "slide": {"type": "statement", "label": "Le problème", "text": "Elles ne parlent **jamais** de notre douane.", "stamp": "Zéro mot sur Tahiti"}},
+    {"at": "Et notre douane, à Tahiti", "slide": {"type": "bullets", "heading": "La douane de Tahiti, c'est…", "items": ["Ses propres règles", "Ses propres taxes", "Son propre système → FENIX"], "reveal": 0}},
+    {"at": "elle a ses propres règles", "slide": {"type": "bullets", "heading": "La douane de Tahiti, c'est…", "items": ["Ses propres règles", "Ses propres taxes", "Son propre système → FENIX"], "reveal": 1}},
+    {"at": "Ses propres taxes", "slide": {"type": "bullets", "heading": "La douane de Tahiti, c'est…", "items": ["Ses propres règles", "Ses propres taxes", "Son propre système → FENIX"], "reveal": 2}},
+    {"at": "Son propre système", "slide": {"type": "bullets", "heading": "La douane de Tahiti, c'est…", "items": ["Ses propres règles", "Ses propres taxes", "Son propre système → FENIX"], "reveal": 3}}
+  ]
+}

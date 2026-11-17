@@ -14,11 +14,11 @@
 ```
 [ton direct, un peu provocateur] Si t'es là... c'est que t'en as marre de regarder les autres vendre sur Facebook... pendant que toi, tu sais même pas par où commencer.
 
-[plus posé, tu te présentes] Moi c'est [TON PRÉNOM]. J'importe de Chine, et je revends ici... au fenua. Et dans cette formation, je vais pas te montrer de la théorie que tu trouves gratuite sur Google.
+[plus posé, tu te présentes] Moi, c'est Naikishan. J'importe de Chine, et je revends ici... au fenua. Et dans cette formation, je vais pas te montrer de la théorie que tu trouves gratuite sur Google.
 
 [ton qui monte, assuré] Je vais te montrer EXACTEMENT comment ça marche... ici. La douane de Tahiti. Les fournisseurs chinois. Le marketing qui convertit vraiment au fenua. [court silence] Du concret.
 
-[en baissant la voix, presque confidentiel] Mais avant de dépenser un SEUL franc... tu dois comprendre un truc que quatre-vingt-dix pour cent des débutants zappent. [reprise normale] Et c'est ça qui les fait perdre de l'argent dès la première commande.
+[en baissant la voix, presque confidentiel] Mais avant de dépenser un SEUL franc... tu dois comprendre un truc que la plupart des débutants zappent. [reprise normale] Et c'est ça qui les fait perdre de l'argent dès la première commande.
 
 [chaleureux, motivant] Ce module, c'est les fondations. Tu le fais à fond... et tout le reste devient logique. [sourire dans la voix] Allez. On y va.
 ```
@@ -151,7 +151,7 @@
 
 [ton direct, un peu de défi amical] Fais-le vraiment. Triche pas. [temps] Si ton produit passe le test... t'es prêt pour la suite. Apprendre à trouver des produits gagnants, et valider qu'il y a de la demande ICI, à Tahiti.
 
-[chaleureux, pour finir] On se retrouve au Module 01. [sourire dans la voix] Allez.
+[chaleureux, pour finir] On se retrouve au module un. [sourire dans la voix] Allez.
 ```
 
 ### 🖥️ TEXTE À L'ÉCRAN :

@@ -1,0 +1,341 @@
+{
+ "slug": "m00_c1_chaine",
+ "where": "Module 00 · Clip 0.1",
+ "voice_from": {
+  "file": "../../06-formation/Module_00_Fondations.md",
+  "clip": 1
+ },
+ "beats": [
+  {
+   "slide": {
+    "type": "title",
+    "eyebrow": "Module 00 · Clip 0.1",
+    "title": "La chaîne de valeur",
+    "subtitle": "Le profit se gagne, ou se perd, à chaque maillon"
+   }
+  },
+  {
+   "at": "Première erreur du débutant",
+   "slide": {
+    "type": "statement",
+    "label": "Erreur n°1 du débutant",
+    "text": "Croire que le business, c'est trouver **LE produit magique**."
+   }
+  },
+  {
+   "at": "Faux",
+   "slide": {
+    "type": "statement",
+    "label": "Erreur n°1 du débutant",
+    "text": "Croire que le business, c'est trouver **LE produit magique**.",
+    "stamp": "Faux"
+   }
+  },
+  {
+   "at": "Le business, c'est une chaîne",
+   "slide": {
+    "type": "statement",
+    "text": "Le business, c'est une **chaîne**.",
+    "sub": "Le profit, tu le gagnes ou tu le perds à chaque maillon."
+   }
+  },
+  {
+   "at": "Tu trouves une idée",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 1
+   }
+  },
+  {
+   "at": "Tu valides qu'il y a de la demande",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 2
+   }
+  },
+  {
+   "at": "Tu sources en Chine",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 3
+   }
+  },
+  {
+   "at": "Tu négocies le prix",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 4
+   }
+  },
+  {
+   "at": "Tu l'expédies",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 5
+   }
+  },
+  {
+   "at": "Tu passes la douane",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 6,
+    "note": "À Tahiti, la douane n'est **pas la même** qu'en métropole."
+   }
+  },
+  {
+   "at": "Tu réceptionnes",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 7,
+    "key": [
+     5
+    ]
+   }
+  },
+  {
+   "at": "Tu fais ton marketing",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 8,
+    "key": [
+     5
+    ]
+   }
+  },
+  {
+   "at": "Tu vends",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 9,
+    "key": [
+     5
+    ]
+   }
+  },
+  {
+   "at": "Tu livres",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 10,
+    "key": [
+     5
+    ]
+   }
+  },
+  {
+   "at": "tu fais revenir le client",
+   "slide": {
+    "type": "chain",
+    "label": "La chaîne de valeur",
+    "steps": [
+     "Idée",
+     "Validation",
+     "Sourcing",
+     "Négo",
+     "Expédition",
+     "Douane",
+     "Réception",
+     "Marketing",
+     "Vente",
+     "Livraison",
+     "Rachat"
+    ],
+    "reveal": 11,
+    "note": "Le plus important : **faire revenir le client**.",
+    "key": [
+     5
+    ]
+   }
+  },
+  {
+   "at": "Le mec qui maîtrise juste le marketing",
+   "slide": {
+    "type": "bullets",
+    "heading": "Qui perd ?",
+    "items": [
+     "Bon en marketing… mais saigné à la douane",
+     "Un produit de ouf… mais mal pricé"
+    ],
+    "reveal": 1,
+    "bad": true
+   }
+  },
+  {
+   "at": "Celui qui trouve un produit de ouf",
+   "slide": {
+    "type": "bullets",
+    "heading": "Qui perd ?",
+    "items": [
+     "Bon en marketing… mais saigné à la douane",
+     "Un produit de ouf… mais mal pricé"
+    ],
+    "reveal": 2,
+    "bad": true
+   }
+  },
+  {
+   "at": "Celui qui gagne",
+   "slide": {
+    "type": "statement",
+    "label": "Qui gagne ?",
+    "text": "Celui qui maîtrise la chaîne **entière**."
+   }
+  },
+  {
+   "at": "Maillon par maillon",
+   "slide": {
+    "type": "retenir",
+    "lines": [
+     "Le profit se gagne, ou se perd, à **chaque** maillon."
+    ]
+   }
+  },
+  {
+   "at": "Maintenant... avant même de sourcer",
+   "slide": {
+    "type": "end",
+    "title": "Les 3 modèles"
+   }
+  }
+ ]
+}

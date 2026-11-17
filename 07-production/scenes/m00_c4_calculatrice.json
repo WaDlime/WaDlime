@@ -1,0 +1,426 @@
+{
+ "slug": "m00_c4_calculatrice",
+ "where": "Module 00 · Clip 0.4",
+ "voice_from": {
+  "file": "../../06-formation/Module_00_Fondations.md",
+  "clip": 4
+ },
+ "beats": [
+  {
+   "slide": {
+    "type": "title",
+    "eyebrow": "Module 00 · Clip 0.4",
+    "title": "Ta calculatrice de rentabilité",
+    "subtitle": "Ton premier outil"
+   }
+  },
+  {
+   "at": "Voici la calculatrice de rentabilité",
+   "slide": {
+    "type": "calc",
+    "label": "Ton premier outil",
+    "heading": "La calculatrice de rentabilité",
+    "sub": "Tes chiffres → ton profit réel et ta marge",
+    "fields": [
+     [
+      "Prix de vente",
+      "5 000 F"
+     ],
+     [
+      "Prix d'achat",
+      "700 F"
+     ],
+     [
+      "Transport",
+      "250 F"
+     ],
+     [
+      "Taxes estimées",
+      "285 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "reveal": 1
+   }
+  },
+  {
+   "at": "Tu mets ton prix d'achat",
+   "slide": {
+    "type": "calc",
+    "label": "Ton premier outil",
+    "heading": "La calculatrice de rentabilité",
+    "sub": "Tes chiffres → ton profit réel et ta marge",
+    "fields": [
+     [
+      "Prix de vente",
+      "5 000 F"
+     ],
+     [
+      "Prix d'achat",
+      "700 F"
+     ],
+     [
+      "Transport",
+      "250 F"
+     ],
+     [
+      "Taxes estimées",
+      "285 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "reveal": 2
+   }
+  },
+  {
+   "at": "Ton transport",
+   "slide": {
+    "type": "calc",
+    "label": "Ton premier outil",
+    "heading": "La calculatrice de rentabilité",
+    "sub": "Tes chiffres → ton profit réel et ta marge",
+    "fields": [
+     [
+      "Prix de vente",
+      "5 000 F"
+     ],
+     [
+      "Prix d'achat",
+      "700 F"
+     ],
+     [
+      "Transport",
+      "250 F"
+     ],
+     [
+      "Taxes estimées",
+      "285 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "reveal": 3
+   }
+  },
+  {
+   "at": "Tes taxes estimées",
+   "slide": {
+    "type": "calc",
+    "label": "Ton premier outil",
+    "heading": "La calculatrice de rentabilité",
+    "sub": "Tes chiffres → ton profit réel et ta marge",
+    "fields": [
+     [
+      "Prix de vente",
+      "5 000 F"
+     ],
+     [
+      "Prix d'achat",
+      "700 F"
+     ],
+     [
+      "Transport",
+      "250 F"
+     ],
+     [
+      "Taxes estimées",
+      "285 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "reveal": 4
+   }
+  },
+  {
+   "at": "Ta pub",
+   "slide": {
+    "type": "calc",
+    "label": "Ton premier outil",
+    "heading": "La calculatrice de rentabilité",
+    "sub": "Tes chiffres → ton profit réel et ta marge",
+    "fields": [
+     [
+      "Prix de vente",
+      "5 000 F"
+     ],
+     [
+      "Prix d'achat",
+      "700 F"
+     ],
+     [
+      "Transport",
+      "250 F"
+     ],
+     [
+      "Taxes estimées",
+      "285 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "reveal": 5
+   }
+  },
+  {
+   "at": "Ta livraison",
+   "slide": {
+    "type": "calc",
+    "label": "Ton premier outil",
+    "heading": "La calculatrice de rentabilité",
+    "sub": "Tes chiffres → ton profit réel et ta marge",
+    "fields": [
+     [
+      "Prix de vente",
+      "5 000 F"
+     ],
+     [
+      "Prix d'achat",
+      "700 F"
+     ],
+     [
+      "Transport",
+      "250 F"
+     ],
+     [
+      "Taxes estimées",
+      "285 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "reveal": 7
+   }
+  },
+  {
+   "at": "en VERT si c'est rentable",
+   "slide": {
+    "type": "calc",
+    "label": "Ton premier outil",
+    "heading": "La calculatrice de rentabilité",
+    "sub": "Tes chiffres → ton profit réel et ta marge",
+    "fields": [
+     [
+      "Prix de vente",
+      "5 000 F"
+     ],
+     [
+      "Prix d'achat",
+      "700 F"
+     ],
+     [
+      "Transport",
+      "250 F"
+     ],
+     [
+      "Taxes estimées",
+      "285 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "reveal": 7,
+    "result": {
+     "kind": "ok",
+     "text": "✔ Rentable · profit 2 485 F · marge 50 %"
+    }
+   }
+  },
+  {
+   "at": "en ROUGE si tu vas bosser à perte",
+   "slide": {
+    "type": "calc",
+    "label": "Ton premier outil",
+    "heading": "La calculatrice de rentabilité",
+    "sub": "Tes chiffres → ton profit réel et ta marge",
+    "fields": [
+     [
+      "Prix de vente",
+      "2 000 F"
+     ],
+     [
+      "Prix d'achat",
+      "700 F"
+     ],
+     [
+      "Transport",
+      "250 F"
+     ],
+     [
+      "Taxes estimées",
+      "285 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "reveal": 7,
+    "result": {
+     "kind": "ko",
+     "text": "✖ À perte · −515 F"
+    }
+   }
+  },
+  {
+   "at": "Télécharge-la",
+   "slide": {
+    "type": "statement",
+    "label": "Outil offert",
+    "text": "La **calculatrice de rentabilité**",
+    "sub": "À télécharger dans ta leçon."
+   }
+  },
+  {
+   "at": "Choisis ton modèle de démarrage",
+   "slide": {
+    "type": "steps",
+    "heading": "Ta mission",
+    "items": [
+     "Choisis ton modèle de démarrage",
+     "Prends un produit que t'as en tête",
+     "Rentre-le dans la calculatrice",
+     "Ton coût rendu est sous les **30 %** ?"
+    ],
+    "reveal": 1
+   }
+  },
+  {
+   "at": "Prends un produit",
+   "slide": {
+    "type": "steps",
+    "heading": "Ta mission",
+    "items": [
+     "Choisis ton modèle de démarrage",
+     "Prends un produit que t'as en tête",
+     "Rentre-le dans la calculatrice",
+     "Ton coût rendu est sous les **30 %** ?"
+    ],
+    "reveal": 2
+   }
+  },
+  {
+   "at": "Rentre-le dans la calculatrice",
+   "slide": {
+    "type": "steps",
+    "heading": "Ta mission",
+    "items": [
+     "Choisis ton modèle de démarrage",
+     "Prends un produit que t'as en tête",
+     "Rentre-le dans la calculatrice",
+     "Ton coût rendu est sous les **30 %** ?"
+    ],
+    "reveal": 3
+   }
+  },
+  {
+   "at": "Et vérifie",
+   "slide": {
+    "type": "steps",
+    "heading": "Ta mission",
+    "items": [
+     "Choisis ton modèle de démarrage",
+     "Prends un produit que t'as en tête",
+     "Rentre-le dans la calculatrice",
+     "Ton coût rendu est sous les **30 %** ?"
+    ],
+    "reveal": 4
+   }
+  },
+  {
+   "at": "Fais-le vraiment",
+   "slide": {
+    "type": "statement",
+    "text": "Fais-le **vraiment**. Triche pas."
+   }
+  },
+  {
+   "at": "On se retrouve au module un",
+   "slide": {
+    "type": "end",
+    "label": "Module 00 validé ✦",
+    "title": "Module 01 · Trouver quoi vendre"
+   }
+  }
+ ]
+}

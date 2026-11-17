@@ -24,7 +24,8 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - `02-scripts-video/` : sommaire + **14 scripts vidéo** (Module 00 à 13), ~75 vidéos, ~3h40. Format : `[CAM]` (ce qu'il dit), `[ÉCRAN]`, `[B-ROLL]`, `[TON]`, exercice de fin, checklist de tournage.
 - `01-blueprint/PLAN_Gamme_et_Sommaire.md` : la gamme (entrée gratuite, formation, accompagnement), le sommaire en 16 modules avec ce qui est déjà écrit et ce qui reste à écrire, les faits douane vérifiés (particulier ou vendeur).
 - `05-previews/` : extraits audio générés (tests de voix).
-- `06-formation/` : les scripts finaux de la formation au format voix IA, un fichier par module (00 à 15), + `README.md` (voix, mode d'emploi, ligne rouge, avancement). Prêts : 00, 04, 05.
+- `06-formation/` : les scripts finaux de la formation au format voix IA, un fichier par module (00 à 15), + `README.md` (voix, mode d'emploi, ligne rouge, avancement). Prêts : 00, 01, 04, 05.
+- `07-production/` : la chaîne de fabrication des vidéos (`render_clip.py` : alignement local faster-whisper + écrans HTML/PNG + montage ffmpeg avec sous-titres), les fichiers de scènes (`scenes/`), sorties dans `out/` (non versionné). Voir son README.
 - `04-plateforme/` : app React gamifiée (`import-mastery-academy.jsx`) : XP, 8 rangs, trophées, série, confettis, sauvegarde via `window.storage`. Design anthracite/or + turquoise lagon quand un module est validé.
 
 ## Les 14 modules d'origine (réorganisés en 16 modules dans le plan : nouveaux modules 05 produits interdits et 07 cas réel, statut et fiscalité en 08)
@@ -56,7 +57,10 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - [x] Voix IA « Bastien » validée par l'utilisateur (17/11/2026)
 - [x] Plan v2.1 validé (17/11/2026) : formation unique + accompagnement, 16 modules, « Te mettre en règle » en 08
 - [x] Module 05 « Produits interdits et réglementés » écrit (`06-formation/Module_05_Produits_interdits.md`) — points 🔎 à vérifier avant publication
-- [ ] Écrire les autres modules dans `06-formation/` au format voix IA, dans l'ordre (01, 02, 03, 06, puis 08 à 15), en vérifiant les points 🔎 du plan
+- [x] Module 01 « Trouver quoi vendre » écrit en voix IA (7 clips)
+- [x] Chaîne de montage vidéo (`07-production/`) + vidéo démo validée techniquement + scènes des 5 clips du module 00
+- [ ] Vidéos de la partie 1 (modules 00 et 01) : voix ElevenLabs à générer (génération gratuite saturée le 17/11 ; quota gratuit de 10 000 crédits/mois insuffisant pour 00 + 01), puis rendu
+- [ ] Écrire les autres modules dans `06-formation/` au format voix IA, dans l'ordre (02, 03, 06, puis 08 à 15), en vérifiant les points 🔎 du plan
 - [ ] Module 07 (cas réel) : démo filmée par Naikishan, qui envoie ses captures et ses chiffres
 - [ ] Mettre la plateforme React à jour avec les 16 modules
 - [ ] Créer les outils 🎁 (calculatrice de rentabilité, grille de scoring /100, modèles de messages fournisseur, comparateur de devis, mémo douane, checklists, bibliothèque de prompts, grille de livraison, scripts SAV, dashboard KPI, roadmap 90 jours)
@@ -68,7 +72,10 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - ElevenLabs (voix, images, vidéo) et Higgsfield (images/vidéo IA) : connecteurs MCP utilisables depuis Claude.
 - CapCut : l'utilisateur prévoit de le connecter pour le montage. À vérifier quand c'est fait : pas de connecteur officiel connu ; seuls des serveurs MCP communautaires non officiels existent (VectCutAPI + capcut-mcp-server, en local, export MP4 manuel). Recommandé : générer voix et visuels avec ElevenLabs/Higgsfield, monter dans CapCut à la main.
 - Chaque génération IA consomme des crédits : demander confirmation avant les générations coûteuses.
+- **ElevenLabs : compte en formule gratuite** (10 000 crédits/mois ≈ 1 crédit par caractère, générations gratuites parfois saturées, **pas de licence commerciale**). Les voix finales de la formation (vendue) doivent être générées avec une formule payante (Starter minimum). Toute la formation ≈ 133 000 caractères. Générer avec `generations_count: 1` pour économiser.
+- **CapCut** est installé sur l'ordinateur de l'utilisateur (pas de connecteur dans cette session) : on lui livre des MP4 finis + les SRT, il peut retoucher dans CapCut.
 
 ## Prochaine action conseillée
-1. Écrire le module 01 (Trouver quoi vendre) dans `06-formation/`, au format voix IA, puis 02, 03, 06, et 08 à 15 (voir `06-formation/README.md`).
-2. Vérifier les points 🔎 du module 05 avant publication.
+1. Générer les voix du module 00 (5 clips, flow ElevenLabs `CwaGI3jjBVwEMr0h9pVC`) puis rendre les vidéos avec `07-production/render_clip.py` et les scènes `07-production/scenes/m00_*.json`.
+2. Écrire les scènes du module 01 ; ses voix demandent une formule ElevenLabs payante (ou le quota du mois suivant).
+3. Continuer l'écriture des modules (02, 03, 06, puis 08 à 15) et vérifier les points 🔎 du module 05.

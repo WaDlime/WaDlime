@@ -1,0 +1,453 @@
+{
+ "slug": "m00_c3_profit",
+ "where": "Module 00 · Clip 0.3",
+ "voice_from": {
+  "file": "../../06-formation/Module_00_Fondations.md",
+  "clip": 3
+ },
+ "beats": [
+  {
+   "slide": {
+    "type": "title",
+    "eyebrow": "Module 00 · Clip 0.3",
+    "title": "La formule du profit",
+    "subtitle": "Ce qui fait perdre de l'argent à la majorité des débutants"
+   }
+  },
+  {
+   "at": "Un gars achète une montre",
+   "slide": {
+    "type": "table",
+    "heading": "Ce qu'il croit",
+    "rows": [
+     [
+      "Achat en Chine",
+      "700 F"
+     ],
+     [
+      "Prix de vente",
+      "5 000 F"
+     ]
+    ],
+    "total": [
+     "Bénéfice",
+     "4 300 F ?"
+    ]
+   }
+  },
+  {
+   "at": "Non",
+   "slide": {
+    "type": "table",
+    "heading": "Ce qu'il croit",
+    "rows": [
+     [
+      "Achat en Chine",
+      "700 F"
+     ],
+     [
+      "Prix de vente",
+      "5 000 F"
+     ]
+    ],
+    "total": [
+     "Bénéfice",
+     "4 300 F ?"
+    ],
+    "stamp": "Il a oublié la moitié des coûts"
+   }
+  },
+  {
+   "at": "On reprend la montre vendue cinq mille",
+   "slide": {
+    "type": "formula",
+    "label": "On calcule TOUT",
+    "text": "**PROFIT** = Prix de vente − (Produit + Transport + Douane + Pub + Livraison + Frais)"
+   }
+  },
+  {
+   "at": "Le produit... sept cents",
+   "slide": {
+    "type": "table",
+    "label": "La montre vendue 5 000 F",
+    "rows": [
+     [
+      "Produit",
+      "700 F"
+     ],
+     [
+      "Transport (sa part)",
+      "250 F"
+     ],
+     [
+      "Douane, TVA, taxes",
+      "285 F"
+     ],
+     [
+      "= Coût rendu à Tahiti",
+      "1 235 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "total": [
+     "Total des coûts",
+     "2 515 F"
+    ],
+    "reveal": 1
+   }
+  },
+  {
+   "at": "Sa part de transport",
+   "slide": {
+    "type": "table",
+    "label": "La montre vendue 5 000 F",
+    "rows": [
+     [
+      "Produit",
+      "700 F"
+     ],
+     [
+      "Transport (sa part)",
+      "250 F"
+     ],
+     [
+      "Douane, TVA, taxes",
+      "285 F"
+     ],
+     [
+      "= Coût rendu à Tahiti",
+      "1 235 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "total": [
+     "Total des coûts",
+     "2 515 F"
+    ],
+    "reveal": 2
+   }
+  },
+  {
+   "at": "La douane, la TVA",
+   "slide": {
+    "type": "table",
+    "label": "La montre vendue 5 000 F",
+    "rows": [
+     [
+      "Produit",
+      "700 F"
+     ],
+     [
+      "Transport (sa part)",
+      "250 F"
+     ],
+     [
+      "Douane, TVA, taxes",
+      "285 F"
+     ],
+     [
+      "= Coût rendu à Tahiti",
+      "1 235 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "total": [
+     "Total des coûts",
+     "2 515 F"
+    ],
+    "reveal": 3
+   }
+  },
+  {
+   "at": "Déjà... ta montre te coûte",
+   "slide": {
+    "type": "table",
+    "label": "La montre vendue 5 000 F",
+    "rows": [
+     [
+      "Produit",
+      "700 F"
+     ],
+     [
+      "Transport (sa part)",
+      "250 F"
+     ],
+     [
+      "Douane, TVA, taxes",
+      "285 F"
+     ],
+     [
+      "= Coût rendu à Tahiti",
+      "1 235 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "total": [
+     "Total des coûts",
+     "2 515 F"
+    ],
+    "reveal": 4
+   }
+  },
+  {
+   "at": "La pub pour trouver le client",
+   "slide": {
+    "type": "table",
+    "label": "La montre vendue 5 000 F",
+    "rows": [
+     [
+      "Produit",
+      "700 F"
+     ],
+     [
+      "Transport (sa part)",
+      "250 F"
+     ],
+     [
+      "Douane, TVA, taxes",
+      "285 F"
+     ],
+     [
+      "= Coût rendu à Tahiti",
+      "1 235 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "total": [
+     "Total des coûts",
+     "2 515 F"
+    ],
+    "reveal": 5
+   }
+  },
+  {
+   "at": "La livraison... quatre cents",
+   "slide": {
+    "type": "table",
+    "label": "La montre vendue 5 000 F",
+    "rows": [
+     [
+      "Produit",
+      "700 F"
+     ],
+     [
+      "Transport (sa part)",
+      "250 F"
+     ],
+     [
+      "Douane, TVA, taxes",
+      "285 F"
+     ],
+     [
+      "= Coût rendu à Tahiti",
+      "1 235 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "total": [
+     "Total des coûts",
+     "2 515 F"
+    ],
+    "reveal": 6
+   }
+  },
+  {
+   "at": "Les frais et les imprévus",
+   "slide": {
+    "type": "table",
+    "label": "La montre vendue 5 000 F",
+    "rows": [
+     [
+      "Produit",
+      "700 F"
+     ],
+     [
+      "Transport (sa part)",
+      "250 F"
+     ],
+     [
+      "Douane, TVA, taxes",
+      "285 F"
+     ],
+     [
+      "= Coût rendu à Tahiti",
+      "1 235 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "total": [
+     "Total des coûts",
+     "2 515 F"
+    ],
+    "reveal": 7
+   }
+  },
+  {
+   "at": "Total de tes coûts",
+   "slide": {
+    "type": "table",
+    "label": "La montre vendue 5 000 F",
+    "rows": [
+     [
+      "Produit",
+      "700 F"
+     ],
+     [
+      "Transport (sa part)",
+      "250 F"
+     ],
+     [
+      "Douane, TVA, taxes",
+      "285 F"
+     ],
+     [
+      "= Coût rendu à Tahiti",
+      "1 235 F"
+     ],
+     [
+      "Pub",
+      "800 F"
+     ],
+     [
+      "Livraison",
+      "400 F"
+     ],
+     [
+      "Frais et imprévus",
+      "80 F"
+     ]
+    ],
+    "total": [
+     "Total des coûts",
+     "2 515 F"
+    ],
+    "reveal": 8
+   }
+  },
+  {
+   "at": "Là... deux mille cinq cents de bénéf réel",
+   "slide": {
+    "type": "table",
+    "heading": "Le vrai bénéfice",
+    "rows": [
+     [
+      "Prix de vente",
+      "5 000 F"
+     ],
+     [
+      "Total des coûts",
+      "− 2 515 F"
+     ]
+    ],
+    "total": [
+     "Profit réel",
+     "≈ 2 485 F"
+    ],
+    "sub": "Il croyait 4 300 F. Voilà la marge qui disparaît quand tu calcules mal."
+   }
+  },
+  {
+   "at": "Alors voilà la règle",
+   "slide": {
+    "type": "retenir",
+    "label": "La règle d'or",
+    "lines": [
+     "Coût rendu ≤ **25 à 30 %** du prix de vente"
+    ],
+    "sub": "Coût rendu = produit + transport + douane"
+   }
+  },
+  {
+   "at": "Montre vendue cinq mille",
+   "slide": {
+    "type": "statement",
+    "text": "Vendue 5 000 F → coût rendu **1 500 F max**.",
+    "sub": "Parce que la pub et la livraison mangent le reste."
+   }
+  },
+  {
+   "at": "Et pour pas avoir à faire ce calcul",
+   "slide": {
+    "type": "end",
+    "title": "Ta calculatrice de rentabilité"
+   }
+  }
+ ]
+}

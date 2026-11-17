@@ -1,0 +1,157 @@
+{
+ "slug": "m00_c2_modeles",
+ "where": "Module 00 · Clip 0.2",
+ "voice_from": {
+  "file": "../../06-formation/Module_00_Fondations.md",
+  "clip": 2
+ },
+ "beats": [
+  {
+   "slide": {
+    "type": "title",
+    "eyebrow": "Module 00 · Clip 0.2",
+    "title": "Les 3 modèles",
+    "subtitle": "Et lequel choisir quand tu démarres"
+   }
+  },
+  {
+   "at": "Numéro un",
+   "slide": {
+    "type": "cards",
+    "label": "3 façons de faire ce business",
+    "cards": [
+     {
+      "n": "1",
+      "title": "Stock et revente",
+      "plus": "Marge maximale",
+      "minus": "Cash bloqué, cartons qui dorment"
+     },
+     {
+      "n": "2",
+      "title": "Précommande",
+      "plus": "Zéro stock mort",
+      "minus": "Le client attend 3 à 6 semaines"
+     },
+     {
+      "n": "3",
+      "title": "Hybride",
+      "plus": "Tu testes en précommande, tu stockes ce qui marche",
+      "badge": "Le bon pour démarrer"
+     }
+    ],
+    "reveal": 1
+   }
+  },
+  {
+   "at": "Numéro deux",
+   "slide": {
+    "type": "cards",
+    "label": "3 façons de faire ce business",
+    "cards": [
+     {
+      "n": "1",
+      "title": "Stock et revente",
+      "plus": "Marge maximale",
+      "minus": "Cash bloqué, cartons qui dorment"
+     },
+     {
+      "n": "2",
+      "title": "Précommande",
+      "plus": "Zéro stock mort",
+      "minus": "Le client attend 3 à 6 semaines"
+     },
+     {
+      "n": "3",
+      "title": "Hybride",
+      "plus": "Tu testes en précommande, tu stockes ce qui marche",
+      "badge": "Le bon pour démarrer"
+     }
+    ],
+    "reveal": 2
+   }
+  },
+  {
+   "at": "Et le troisième",
+   "slide": {
+    "type": "cards",
+    "label": "3 façons de faire ce business",
+    "cards": [
+     {
+      "n": "1",
+      "title": "Stock et revente",
+      "plus": "Marge maximale",
+      "minus": "Cash bloqué, cartons qui dorment"
+     },
+     {
+      "n": "2",
+      "title": "Précommande",
+      "plus": "Zéro stock mort",
+      "minus": "Le client attend 3 à 6 semaines"
+     },
+     {
+      "n": "3",
+      "title": "Hybride",
+      "plus": "Tu testes en précommande, tu stockes ce qui marche",
+      "badge": "Le bon pour démarrer"
+     }
+    ],
+    "reveal": 3,
+    "best": 2
+   }
+  },
+  {
+   "at": "Tu TESTES un produit en précommande",
+   "slide": {
+    "type": "steps",
+    "heading": "L'hybride, en 3 temps",
+    "items": [
+     "Tu testes en précommande",
+     "Personne ne commande ? T'as rien perdu",
+     "Ça marche ? **Là**, tu stockes"
+    ],
+    "reveal": 1
+   }
+  },
+  {
+   "at": "Si personne commande",
+   "slide": {
+    "type": "steps",
+    "heading": "L'hybride, en 3 temps",
+    "items": [
+     "Tu testes en précommande",
+     "Personne ne commande ? T'as rien perdu",
+     "Ça marche ? **Là**, tu stockes"
+    ],
+    "reveal": 2
+   }
+  },
+  {
+   "at": "Si ça marche",
+   "slide": {
+    "type": "steps",
+    "heading": "L'hybride, en 3 temps",
+    "items": [
+     "Tu testes en précommande",
+     "Personne ne commande ? T'as rien perdu",
+     "Ça marche ? **Là**, tu stockes"
+    ],
+    "reveal": 3,
+    "sub": "La précommande, c'est déjà vendre : tu la lances une fois en règle (module 08)."
+   }
+  },
+  {
+   "at": "Tu vois la logique",
+   "slide": {
+    "type": "statement",
+    "text": "Tu laisses le **marché** décider… avant de risquer ton argent."
+   }
+  },
+  {
+   "at": "Bon. Maintenant",
+   "slide": {
+    "type": "end",
+    "title": "La formule du profit"
+   }
+  }
+ ]
+}

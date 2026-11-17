@@ -39,7 +39,7 @@ Le module **08 « Te mettre en règle »** arrive au moment de vendre, pas au d�
 | # | Module | Fichier | Statut |
 |---|---|---|---|
 | 00 | Fondations & état d'esprit | `Module_00_Fondations.md` | ✅ Prêt |
-| 01 | Trouver quoi vendre | — | ⏳ À convertir (+ leçon « pourquoi chez toi plutôt que sur Shein », + la précommande vient après les papiers) |
+| 01 | Trouver quoi vendre | `Module_01_Trouver_quoi_vendre.md` | ✅ Écrit (7 clips, dont « pourquoi chez toi plutôt que sur Shein ») |
 | 02 | Sourcing & négociation | — | ⏳ À convertir (+ 3 leçons) |
 | 03 | Transport, de la Chine à Tahiti | — | ⏳ À convertir (+ 2 leçons, 🔎) |
 | 04 | ⭐ La douane polynésienne | `Module_04_Douane.md` | ✅ Prêt |
@@ -56,3 +56,4 @@ Le module **08 « Te mettre en règle »** arrive au moment de vendre, pas au d�
 | 15 | Systématiser & scaler | — | ⏳ À convertir |
 
 Les scripts d'origine (format `[CAM]`, à filmer soi-même) restent dans `02-scripts-video/`.
+Les vidéos se fabriquent avec `07-production/` (voir son README).
