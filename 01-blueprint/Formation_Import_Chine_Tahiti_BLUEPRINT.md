@@ -462,7 +462,7 @@ Un prix élevé **est** un argument (perçu = sérieux, engageant). Tu le justif
 
 ## 5. La structure d'offre (3 niveaux — ascension de prix)
 
-> ⚠️ **Remplacé le 17/11/2026** par la gamme en 3 produits (F1 Savoir importer → F2 Créer ton business → Accompagnement) : voir `PLAN_Gamme_et_Formation_1.md`. Gardé ici pour mémoire.
+> ⚠️ **Remplacé le 17/11/2026** par une gamme en 2 offres (la formation complète + l'accompagnement, avec une entrée gratuite) : voir `PLAN_Gamme_et_Sommaire.md`. Gardé ici pour mémoire.
 | Offre | Contenu | Cible |
 |---|---|---|
 | **Starter** | Accès aux 13 modules vidéo + tous les templates/outils | Le débutant autonome |
