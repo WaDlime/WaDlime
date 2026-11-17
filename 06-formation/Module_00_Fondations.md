@@ -1,27 +1,9 @@
-# 🎙️ MODULE 00 — VERSION IA (VOIX OFF) — TEST
-### Prêt à coller dans ton générateur de voix / vidéo IA
+# 🎙️ MODULE 00 — FONDATIONS & ÉTAT D'ESPRIT — VERSION VOIX IA
+### 5 clips · ~13 min
 
----
-
-## 📖 COMMENT UTILISER CE FICHIER (lis-moi d'abord)
-
-**1. Le texte en bloc gris = la VOIX OFF.** C'est ça, et seulement ça, que tu colles dans l'outil IA (ElevenLabs, HeyGen, etc.).
-
-**2. Les balises entre crochets `[comme ça]` = les intonations.**
-Exemple : `[ton complice]`, `[en chuchotant]`, `[plus fort]`, `[sourire dans la voix]`.
-→ Ces balises marchent bien sur **ElevenLabs v3** (et outils similaires). Elles guident l'émotion de la voix.
-→ ⚠️ **TESTE 2-3 LIGNES D'ABORD.** Si l'outil LIT la balise à voix haute au lieu de la jouer, c'est qu'il ne les gère pas : dans ce cas, supprime les crochets et garde juste la ponctuation (les `...` et virgules font déjà beaucoup pour le naturel).
-
-**3. Les `...` et les virgules = des respirations.** Je les ai placés exprès pour le rythme. Ne les enlève pas, c'est ce qui rend la voix humaine.
-
-**4. Les mots en MAJUSCULES = à accentuer.** La voix appuie dessus.
-
-**5. Prononciation locale** (à vérifier / corriger selon ta voix IA) :
-- « fenua » → *fé-noua*
-- « XPF » → dis plutôt « francs » à l'oral (plus naturel)
-- Si un mot sonne faux, écris-le phonétique.
-
-**6. Réglages voix conseillés :** voix masculine FR, jeune, ton « posé mais énergique ». Sur ElevenLabs : Stability ~40-50 % (plus bas = plus expressif/variable), Similarity ~75 %, Style exagéré légèrement.
+> **Format, voix (« Bastien ») et réglages : voir `README.md`.** Mêmes voix et mêmes réglages sur tous les clips.
+> **Prononciation :** « fenua » → *fé-noua* · « XPF » → dis « francs ».
+> **Chiffres d'exemple** (la montre à cinq mille francs) : à remplacer par un vrai produit à toi, une Skmei par exemple.
 
 ---
 ---
@@ -185,14 +167,7 @@ Exemple : `[ton complice]`, `[en chuchotant]`, `[plus fort]`, `[sourire dans la 
 ---
 ---
 
-## ✅ RÉCAP TECHNIQUE POUR CE MODULE
-- **5 clips voix off** à générer séparément
-- Durée visée : ~13 min au total une fois monté
-- **Teste le clip 0.0 en premier** pour valider que ta voix IA gère bien les balises `[...]` et le ton. Si c'est bon, enchaîne les 4 autres.
-- Garde la MÊME voix et les MÊMES réglages sur les 5 clips (cohérence).
-
----
-
-### 👉 Dis-moi ce que ça donne une fois testé
-Si le rendu te plaît, je te convertis les 13 autres modules sur ce format exact.
-Si tu veux ajuster (plus/moins d'intonations, un autre style de balises, voix différente), dis-moi et j'adapte avant de faire le reste.
+## ✅ RÉCAP TECHNIQUE
+- **5 clips voix off** (0.0 à 0.4) · durée visée ~13 min une fois monté
+- Voix « Bastien », mêmes réglages que les autres modules
+- Remplace les chiffres d'exemple par ceux d'un vrai produit à toi

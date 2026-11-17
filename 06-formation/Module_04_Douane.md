@@ -1,16 +1,9 @@
-# 🎙️ MODULE 04 — LA DOUANE POLYNÉSIENNE — VERSION IA (VOIX OFF)
-### ⭐ Le module phare · Prêt à coller dans ton générateur de voix / vidéo IA
+# 🎙️ MODULE 04 — LA DOUANE POLYNÉSIENNE — VERSION VOIX IA
+### ⭐ Le module vitrine · 8 clips · ~24 min
 
----
-
-## 📖 AVANT DE GÉNÉRER
-
-- **Même format que le module 00** : bloc gris = voix off à coller · `[balises]` = intonations · `...` = respirations · MAJUSCULES = mots accentués.
-- **Mêmes voix et mêmes réglages** que le module 00 (cohérence sur toute la formation).
-- Les nombres sont écrits comme on les dit (« vingt mille francs », pas « 20 000 XPF »).
-- Prononciation à vérifier : « FENIX » → *fé-nix* · « CCISM » → *C-C-I-S-M* · « DICP » → *D-I-C-P* · « CAF » → *caf*.
-
-> ⚠️ **Faits vérifiés le 16/11/2026** sur les sites officiels (Douane PF, DICP) — voir « Sources » en bas. Les taux et seuils changent : revérifie juste avant de publier, et garde le rappel « chiffres indicatifs » à l'écran.
+> **Format, voix (« Bastien ») et réglages : voir `README.md`.** Mêmes voix et mêmes réglages sur tous les clips.
+> **Prononciation à vérifier :** « FENIX » → *fé-nix* · « CCISM » → *C-C-I-S-M* · « DICP » → *D-I-C-P* · « CAF » → *caf*.
+> ⚠️ **Faits vérifiés le 16-17/11/2026** sur les sites officiels (Douane PF, DICP) — voir « Sources » en bas. Les taux et seuils changent : revérifie juste avant de publier, et garde le rappel « chiffres indicatifs » à l'écran.
 
 ---
 ---
@@ -56,6 +49,8 @@
 [ton qui se durcit] Beaucoup de débutants pensent que ça marche pareil quand ils importent pour REVENDRE. [temps] Faux.
 
 [ton qui martèle, chaque phrase posée] Cette franchise... elle est réservée aux particuliers. Pour un usage perso. Et occasionnel. Dès que tu importes pour ton business... t'as plus de franchise. Tu es taxé dès le PREMIER franc. Et tu dois faire une vraie déclaration en douane.
+
+[ton pédagogue] Une ou deux pièces pour toi, pour voir la qualité... ça reste un achat perso. Mais du stock pour revendre... même un petit stock « pour tester »... c'est un import pro.
 
 [ton grave] Et faire passer ta marchandise pour des colis perso... c'est de la fausse déclaration. On en reparle à la fin du module... mais c'est NON.
 
@@ -164,7 +159,7 @@
 
 [ton qui conseille, rassurant] Option une... celle que je te conseille quand tu démarres. Tu passes par un commissionnaire en douane. Souvent, c'est ton transitaire. Il fait la déclaration pour toi... à tes frais. Tu délègues la complexité à un pro. C'est carré.
 
-[ton plus nuancé] Option deux... tu déclares toi-même dans FENIX. [temps] Mais attention. Pour ça, il faut signer une convention avec la douane. [ton complice] C'est un truc pour plus tard... quand tu fais du volume régulier, et que tu veux économiser les frais du commissionnaire.
+[ton plus nuancé] Option deux... tu déclares toi-même dans FENIX. [temps] Mais attention. Pour ça, il faut signer une convention avec la douane... la version pour les pros. [ton complice] C'est un truc pour plus tard... quand ton activité est déclarée, que tu fais du volume régulier, et que tu veux économiser les frais du commissionnaire.
 
 [ton ferme, résumé] Au début... laisse un pro gérer.
 
@@ -174,7 +169,7 @@
 ### 🖥️ TEXTE À L'ÉCRAN :
 - `FENIX = FENua Import eXport · le système officiel (depuis 2019)`
 - `1 · Commissionnaire en douane ✦ (recommandé pour débuter)`
-- `2 · Déclarer toi-même dans FENIX (convention avec la douane obligatoire)`
+- `2 · Déclarer toi-même dans FENIX (convention « professionnel » avec la douane)`
 
 ### 🎞️ B-ROLL :
 - Logo / page FENIX sur le site de la douane PF
@@ -269,7 +264,7 @@
 
 [ton fier, un peu de défi] C'est un truc que la plupart des vendeurs du fenua savent même pas calculer. [temps] Toi... si.
 
-[chaleureux, pour finir] Au prochain module... la réception de ton colis. DHL, FedEx, et ce qui t'attend à l'arrivée. [sourire dans la voix] On continue.
+[chaleureux, pour finir] Au prochain module... les produits interdits. Le colis qui n'arrive jamais... et comment ne JAMAIS le vivre. [sourire dans la voix] On continue.
 ```
 
 ### 🖥️ TEXTE À L'ÉCRAN :
@@ -278,7 +273,7 @@
 - `🎁 OUTIL 3 : Contacts officiels — Douane PF · CCISM (service International) · DICP`
 - La mission :
   `1. Trouve le code de ton produit · 2. Simulateur · 3. Simule avec la valeur CAF · 4. Ajoute au coût rendu`
-- Fin : `✦ Module 04 validé · 🛃 Trophée « Maître Douane » · +400 XP` → `▶ Module 05 : Réception & express`
+- Fin : `✦ Module 04 validé · 🛃 Trophée « Maître Douane » · +400 XP` → `▶ Module 05 : Produits interdits et réglementés`
 
 ### 🎞️ B-ROLL :
 - Aperçu du mémo PDF
@@ -289,7 +284,7 @@
 
 ## ✅ RÉCAP TECHNIQUE
 - **8 clips voix off** (4.0 à 4.7) · durée visée ~24 min une fois monté
-- Mêmes voix et réglages que le module 00
+- Voix « Bastien », mêmes réglages que les autres modules
 - ⭐ Module vitrine : c'est celui à donner en **extrait gratuit** pour vendre la formation
 - Le **screen record du vrai simulateur** (clip 4.5) est à tourner toi-même, c'est la preuve terrain
 - Sous-titres obligatoires
@@ -298,8 +293,9 @@
 
 ## 📚 SOURCES (vérifiées le 16/11/2026)
 - Douane PF — Colis postaux (franchise particulier 20 000 XPF, forfait 20 % UE / 30 % hors UE jusqu'à 50 000 XPF, usage perso et occasionnel) : https://www.service-public.pf/douane/particuliers/colis-postaux/
-- Douane PF — FENIX (FENua Import eXport, depuis 2019, convention Sociétés / Particuliers) : https://www.service-public.pf/douane/fenix/
+- Douane PF — FENIX (FENua Import eXport, depuis 2019 ; conventions « particulier » et « professionnel », formulaires 2025) : https://www.service-public.pf/douane/fenix/
 - Douane PF — FAQ (valeur CAF, TVA sur CAF + DD + autres taxes, commissionnaire ou convention FENIX) : https://www.service-public.pf/douane/faq/
 - Douane PF — Dédouanement, code à 8 chiffres et lien vers le simulateur : https://www.service-public.pf/douane/professionnels/procedure-de-dedouanement-et-la-simulation-dune-taxation/le-dedouanement-des-marchandises/
 - DICP — TVA (16 % normal, 13 % services, 5 % réduit) : https://www.service-public.pf/dicp/professionnels/vos-impots/taxe-sur-la-valeur-ajoutee/
 - ⚠️ Non vérifié sur source primaire : la fourchette exacte des taux de TDL. Le script reste volontairement vague (« de quelques % à beaucoup plus »).
+- 🔎 À faire confirmer par la douane : un échantillon commandé et gardé pour soi (1 ou 2 pièces) reste un achat perso (clip 4.1).
