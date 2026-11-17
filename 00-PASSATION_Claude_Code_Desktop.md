@@ -8,7 +8,8 @@
 - Ce fichier résume **toute la conversation** entre Naikishan et Claude dans la session cloud : ce qu'on a fait, ce qu'on a décidé, **pourquoi**, ce qui a été refusé, et ce qui reste à faire.
 - La mémoire courante du projet est dans **`CLAUDE.md`** (règles, gamme, faits vérifiés, avancement). Pour les règles, `CLAUDE.md` fait foi ; pour l'historique et le contexte, c'est ce fichier.
 - **Ordre de lecture conseillé** : `CLAUDE.md` → ce fichier → `01-blueprint/PLAN_Gamme_et_Sommaire.md` → `06-formation/README.md` → `07-production/demo_v2/README.md`.
-- ⚠️ **Rien n'a pu être poussé sur GitHub** (erreur 403 : Claude n'avait pas l'accès au dépôt `WaDlime/WaDlime`). Le travail complet arrive donc par un **zip** : le dépôt entier avec son historique git (branche `claude/new-session-4nc7lt`, 10 commits) et les vidéos produites. Si l'accès GitHub est réparé, pousse cette branche.
+- ✅ **Tout le travail est sur GitHub** : dépôt `WaDlime/WaDlime`, branche **`claude/new-session-4nc7lt`**. Le push a échoué en 403 pendant toute la session, puis a fonctionné à la fin, le 17/11. Pour la récupérer : `git clone https://github.com/WaDlime/WaDlime.git`, puis `git checkout claude/new-session-4nc7lt`. Aucune pull request n'a été créée.
+- Les **vidéos produites** (`07-production/out/`) ne sont **pas dans git** (trop lourdes). La démo v2 a été envoyée à Naikishan dans la conversation : à copier dans `07-production/out/` si besoin. Le reste se régénère avec les scripts (voir la section 7).
 - Les connecteurs **ElevenLabs** et **Higgsfield** étaient branchés dans la session cloud. Vérifie qu'ils le sont aussi dans Claude Code Desktop avant de compter dessus.
 
 ---
@@ -32,7 +33,7 @@
 
 ### Étape 1 — Import du projet (16/11)
 - Naikishan envoie un zip `import-mastery-formation` : `CLAUDE.md`, le blueprint (`01-blueprint/Formation_Import_Chine_Tahiti_BLUEPRINT.md`), le sommaire et les **14 scripts vidéo** (`02-scripts-video/`), une **version voix IA du module 00** (`03-voix-ia/`) et l'**app React gamifiée** (`04-plateforme/import-mastery-academy.jsx`).
-- Le dépôt était vide : tout a été importé à la racine. Premier essai de push : **refusé (403)**.
+- Le dépôt était vide : tout a été importé à la racine. Le push a été **refusé (403)** pendant toute la session ; il n'a fonctionné qu'à la toute fin, le 17/11.
 
 ### Étape 2 — Priorité au contenu : le module douane (16/11)
 - Naikishan : « Je veux travailler d'abord sur la formation, le contenu, c'est le plus important. »
@@ -134,7 +135,6 @@
 2. **Avec quoi fait-on les voix des modules ?** Il ne veut plus dépenser de crédits ElevenLabs sans accord. Options : ElevenLabs payant (on garde « Bastien », licence commerciale), cloner sa propre voix (formule payante), ou une autre solution.
 3. **Quel budget d'illustrations ?** Compter environ 10 images par clip, soit à peu près 140 crédits Higgsfield pour les 93 vidéos. Il faudra une formule payante, ou avancer petit à petit.
 4. **La démo du module 07** : il doit envoyer ses captures et ses chiffres.
-5. **L'accès GitHub** : à reconnecter pour pousser le travail.
 
 ---
 
@@ -176,7 +176,7 @@
 | **ElevenLabs** | Formule **gratuite** : 10 000 crédits par mois (environ 1 crédit par caractère), remise à zéro vers le 18/12 | **Pas de licence commerciale** en gratuit. Générations souvent saturées. Voix « Bastien » `69ujSsYIBOGW4duCBBSW`, `eleven_v4`, `generations_count: 1`. Flow de la preview : `RsOpg9vP0aPJJbFm2yT6` ; flow du module 00 : `CwaGI3jjBVwEMr0h9pVC` (vide). **Consigne : plus de crédits sans accord.** |
 | **Higgsfield** | Formule **gratuite**, **7,9 crédits** | Seul **`z_image`** est ouvert (0,15 crédit, 2048 px, pas d'image de référence). Bloqués : GPT Image 2.6 (0,25 à 2,75 crédits en payant). Autres prix : nano_banana 1, nano_banana_2 1,5, seedream 5.5 2,5 ; vidéo kling3_0 5 s = 10, seedance 2.5 5 s = 35 ; musique 30 s = 4,36. **Une génération à la fois** (sinon erreur 429). Pas de générations illimitées. |
 | **CapCut** | Installé sur l'ordinateur de Naikishan | Pas de connecteur : on livre des MP4 et des SRT, il retouche lui-même. Sa bibliothèque musicale peut remplacer la musique synthétisée. |
-| **GitHub** | Push refusé (403) | Reconnecter GitHub sur claude.ai/connect-github, ou installer l'app Claude GitHub sur le dépôt. Branche de travail : `claude/new-session-4nc7lt`. |
+| **GitHub** | Push fonctionnel depuis la fin de la session (17/11), refusé en 403 avant | Branche de travail : `claude/new-session-4nc7lt` (pas de pull request). En cas de nouveau 403 : reconnecter GitHub sur claude.ai/connect-github ou installer l'app Claude GitHub sur le dépôt. |
 
 **Outils techniques** (préinstallés dans le cloud, à installer sur l'ordinateur) :
 - ffmpeg compilé avec libass ;
@@ -246,7 +246,7 @@ CLAUDE.md                             ← mémoire courante du projet (règles, 
   demo_v2/photos/                     ← Modele_A_editorial_cartes.png · Modele_B_scene_3D.png
   assets_hf/                          ← illustrations Higgsfield (scènes 3D, cartes, mascotte, icônes)
   tools/keyout.py · tools/sound.py    ← détourage fond vert · bruitages et musique synthétisés
-  out/                                ← vidéos produites (non versionnées dans git, mais présentes dans le zip)
+  out/                                ← vidéos produites (non versionnées dans git ; la démo v2 a été envoyée dans la conversation)
 ```
 
 ---
