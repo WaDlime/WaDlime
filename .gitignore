@@ -16,3 +16,5 @@ __pycache__/
 07-production/assets_v3/mascottes/*_raw.png
 check/
 frames/
+07-production/demo_pop/*.wav
+07-production/demo_pop/render.log
