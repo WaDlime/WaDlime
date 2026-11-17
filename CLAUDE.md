@@ -49,6 +49,11 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - **Mascotte choisie le 17/11/2026 : la frégate capitaine** (`07-production/assets_v3/mascottes/fregate3.png`) : oiseau blanc, queue noire, long bec gris fin, pattes grises, casquette de capitaine blanche à ancre dorée, chemise à fleurs turquoise (tiare), bras croisés sur des cartons. Version retouchée pour ne PAS ressembler à Donald : jamais de bec/pattes orange ni de veste marine. Le petit colis (`mascot.png`) est abandonné. Prompt : « a cheerful seabird captain (a frigatebird). White chest and white face… long thin slate-grey beak… grey webbed feet… white captain cap with a navy band and a gold anchor badge… open short-sleeve turquoise Polynesian aloha shirt with white tiare flowers ». Fond rose piégé entre les pattes : retirer les composantes de couleur du fond (scipy ndimage).
 - But pédagogique rappelé : ludique, captivant, et surtout **que les élèves comprennent**.
 
+## Démo v4 (17/11/2026) — DA rétro en finition premium, jugée « bcp mieux » par Naikishan
+- `07-production/demo_v4/` → `out/Demo_v4_premium.mp4` (60 i/s, ressorts, typo lettre à lettre en relief, transitions bandes/travelling flouté/zoom/iris doré, sous-titres à pastille dorée, bandeau MODULE 04 + barre de progression, frégate qui atterrit). **Modèle de référence pour les modules.**
+- **Refusé (ne pas reproposer) : le rendu 3D doux « film d'animation / maquette isométrique »** (test `demo_iso/`, `assets_iso/`, abandonné le 17/11).
+- **Higgsfield : solde à 0,1 crédit** (17/11 soir) → plus aucune génération d'image possible sans recharge.
+
 ## Direction visuelle v2 (démo du 17/11/2026, remplacée par la v3 si validée)
 - L'utilisateur a refusé le style « diapos » : il veut du **premium**, **chaque phrase illustrée**, des **bruitages**, « un plaisir de regarder, donc d'apprendre ».
 - **Modèle A — éditorial** (réf. « Did you know ») : fond crème à points, titre noir très gras + mot clé en italique doré (Inter Tight + Instrument Serif), cartes illustrées en éventail. Pour accroches, chapitres, fins.
@@ -89,7 +94,7 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - CapCut : l'utilisateur prévoit de le connecter pour le montage. À vérifier quand c'est fait : pas de connecteur officiel connu ; seuls des serveurs MCP communautaires non officiels existent (VectCutAPI + capcut-mcp-server, en local, export MP4 manuel). Recommandé : générer voix et visuels avec ElevenLabs/Higgsfield, monter dans CapCut à la main.
 - Chaque génération IA consomme des crédits : demander confirmation avant les générations coûteuses.
 - **Consigne du 17/11/2026 : ne plus dépenser de crédits ElevenLabs** sans nouvel accord de l'utilisateur.
-- **Higgsfield : compte gratuit, environ 6,4 crédits restants** (17/11 soir). Seul `z_image` est ouvert (0,15 crédit l'image, 2048 px, très bon rendu 3D stylisé, pas d'image de référence) ; GPT Image demande une formule payante ; générations une par une (limite de débit) ; animation vidéo IA hors budget (10 à 35 crédits / 5 s) ; musique 4,36 crédits / 30 s → musique et bruitages faits en local.
+- **Higgsfield : compte gratuit, solde épuisé (0,1 crédit le 17/11 soir).** Seul `z_image` est ouvert (0,15 crédit l'image, 2048 px, très bon rendu 3D stylisé, pas d'image de référence) ; GPT Image demande une formule payante ; générations une par une (limite de débit) ; animation vidéo IA hors budget (10 à 35 crédits / 5 s) ; musique 4,36 crédits / 30 s → musique et bruitages faits en local.
 - **ElevenLabs : compte en formule gratuite** (10 000 crédits/mois ≈ 1 crédit par caractère, générations gratuites parfois saturées, **pas de licence commerciale**). Les voix finales de la formation (vendue) doivent être générées avec une formule payante (Starter minimum). Toute la formation ≈ 133 000 caractères. Générer avec `generations_count: 1` pour économiser.
 - **CapCut** est installé sur l'ordinateur de l'utilisateur (pas de connecteur dans cette session) : on lui livre des MP4 finis + les SRT, il peut retoucher dans CapCut.
 
