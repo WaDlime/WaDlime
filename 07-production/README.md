@@ -1,5 +1,7 @@
 # 🎬 07-PRODUCTION — FABRIQUER LES VIDÉOS
 
+> ⚠️ **17/11/2026 : le style « diapos » ci-dessous a été jugé pas assez premium.** Le nouveau style (cartes éditoriales + scènes 3D Higgsfield, bruitages, musique) est dans `demo_v2/` : voir `demo_v2/README.md`. La partie alignement (faster-whisper) et sous-titres reste utile.
+
 La chaîne qui transforme un script voix IA (`06-formation/`) + sa voix off ElevenLabs en **vidéo MP4 prête à publier** (1920×1080, 25 i/s), aux couleurs de la plateforme (anthracite, or, turquoise lagon), avec sous-titres incrustés.
 
 ## Ce que fait `render_clip.py`

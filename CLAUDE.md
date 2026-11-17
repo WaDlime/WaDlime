@@ -25,7 +25,7 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - `01-blueprint/PLAN_Gamme_et_Sommaire.md` : la gamme (entrée gratuite, formation, accompagnement), le sommaire en 16 modules avec ce qui est déjà écrit et ce qui reste à écrire, les faits douane vérifiés (particulier ou vendeur).
 - `05-previews/` : extraits audio générés (tests de voix).
 - `06-formation/` : les scripts finaux de la formation au format voix IA, un fichier par module (00 à 15), + `README.md` (voix, mode d'emploi, ligne rouge, avancement). Prêts : 00, 01, 04, 05.
-- `07-production/` : la chaîne de fabrication des vidéos (`render_clip.py` : alignement local faster-whisper + écrans HTML/PNG + montage ffmpeg avec sous-titres), les fichiers de scènes (`scenes/`), sorties dans `out/` (non versionné). Voir son README.
+- `07-production/` : la fabrication des vidéos. `render_clip.py` = ancienne chaîne « diapos » (rejetée : pas assez premium). **`demo_v2/` = le nouveau style premium** (page animée `scene.html` rendue image par image, `mix_audio.py` voix + musique + bruitages, `photos/` = les 2 images modèles). `assets_hf/` = illustrations Higgsfield (+ détourages), `tools/keyout.py` (détourage fond vert), `tools/sound.py` (bruitages et musique synthétisés). Sorties dans `out/` (non versionné).
 - `04-plateforme/` : app React gamifiée (`import-mastery-academy.jsx`) : XP, 8 rangs, trophées, série, confettis, sauvegarde via `window.storage`. Design anthracite/or + turquoise lagon quand un module est validé.
 
 ## Les 14 modules d'origine (réorganisés en 16 modules dans le plan : nouveaux modules 05 produits interdits et 07 cas réel, statut et fiscalité en 08)
@@ -40,6 +40,13 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
    - Le créateur n'est ni douanier ni conseiller fiscal : le dire dans les vidéos.
 2. **Éthique** : jamais de sous-déclaration en douane, de contrefaçon, de faux avis ni de visuels IA trompeurs.
 3. **Chiffres d'exemple** (ex. montre à 5 000 XPF) : placeholders à remplacer par de vrais produits du créateur.
+
+## Direction visuelle des vidéos (démo v2 du 17/11/2026 — en attente de validation)
+- L'utilisateur a refusé le style « diapos » : il veut du **premium**, **chaque phrase illustrée**, des **bruitages**, « un plaisir de regarder, donc d'apprendre ».
+- **Modèle A — éditorial** (réf. « Did you know ») : fond crème à points, titre noir très gras + mot clé en italique doré (Inter Tight + Instrument Serif), cartes illustrées en éventail. Pour accroches, chapitres, fins.
+- **Modèle B — scène 3D** (réf. personnages low-poly) : personnage polynésien (t-shirt bleu) dans son décor, carte crème de texte, tampons, anneaux qui pointent l'image, sous-titres mot à mot (mot actif en or). Pour raconter et expliquer.
+- Fils rouges : **mascotte « colis » avec fleur de tiare**, or / corail / lagon, grain léger, musique « île » douce baissée sous la voix, whoosh entre les scènes, pops sur les apparitions.
+- Ne jamais reprendre la mascotte ou le logo d'une autre marque vus dans les références.
 
 ## Format « voix off IA » (mode d'emploi complet dans `06-formation/README.md`)
 - **Voix validée le 17/11/2026 : ElevenLabs « Bastien – Calm & Clear French Teacher »** (voice_id `69ujSsYIBOGW4duCBBSW`, modèle `eleven_v4`, réglages par défaut). Les balises d'intonation passent bien.
@@ -59,7 +66,8 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - [x] Module 05 « Produits interdits et réglementés » écrit (`06-formation/Module_05_Produits_interdits.md`) — points 🔎 à vérifier avant publication
 - [x] Module 01 « Trouver quoi vendre » écrit en voix IA (7 clips)
 - [x] Chaîne de montage vidéo (`07-production/`) + vidéo démo validée techniquement + scènes des 5 clips du module 00
-- [ ] Vidéos de la partie 1 (modules 00 et 01) : voix ElevenLabs à générer (génération gratuite saturée le 17/11 ; quota gratuit de 10 000 crédits/mois insuffisant pour 00 + 01), puis rendu
+- [x] Démo v2 premium (23 s, début du module 04, voix déjà générée) + 2 images modèles — **en attente de validation**
+- [ ] Vidéos de la partie 1 (modules 00 et 01) : choisir la source des voix (l'utilisateur ne veut plus dépenser de crédits ElevenLabs), puis illustrer chaque phrase dans le style v2
 - [ ] Écrire les autres modules dans `06-formation/` au format voix IA, dans l'ordre (02, 03, 06, puis 08 à 15), en vérifiant les points 🔎 du plan
 - [ ] Module 07 (cas réel) : démo filmée par Naikishan, qui envoie ses captures et ses chiffres
 - [ ] Mettre la plateforme React à jour avec les 16 modules
@@ -72,10 +80,12 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - ElevenLabs (voix, images, vidéo) et Higgsfield (images/vidéo IA) : connecteurs MCP utilisables depuis Claude.
 - CapCut : l'utilisateur prévoit de le connecter pour le montage. À vérifier quand c'est fait : pas de connecteur officiel connu ; seuls des serveurs MCP communautaires non officiels existent (VectCutAPI + capcut-mcp-server, en local, export MP4 manuel). Recommandé : générer voix et visuels avec ElevenLabs/Higgsfield, monter dans CapCut à la main.
 - Chaque génération IA consomme des crédits : demander confirmation avant les générations coûteuses.
+- **Consigne du 17/11/2026 : ne plus dépenser de crédits ElevenLabs** sans nouvel accord de l'utilisateur.
+- **Higgsfield : compte gratuit, 7,9 crédits restants** (17/11). Seul `z_image` est ouvert (0,15 crédit l'image, 2048 px, très bon rendu 3D stylisé, pas d'image de référence) ; GPT Image demande une formule payante ; générations une par une (limite de débit) ; animation vidéo IA hors budget (10 à 35 crédits / 5 s) ; musique 4,36 crédits / 30 s → musique et bruitages faits en local.
 - **ElevenLabs : compte en formule gratuite** (10 000 crédits/mois ≈ 1 crédit par caractère, générations gratuites parfois saturées, **pas de licence commerciale**). Les voix finales de la formation (vendue) doivent être générées avec une formule payante (Starter minimum). Toute la formation ≈ 133 000 caractères. Générer avec `generations_count: 1` pour économiser.
 - **CapCut** est installé sur l'ordinateur de l'utilisateur (pas de connecteur dans cette session) : on lui livre des MP4 finis + les SRT, il peut retoucher dans CapCut.
 
 ## Prochaine action conseillée
-1. Générer les voix du module 00 (5 clips, flow ElevenLabs `CwaGI3jjBVwEMr0h9pVC`) puis rendre les vidéos avec `07-production/render_clip.py` et les scènes `07-production/scenes/m00_*.json`.
-2. Écrire les scènes du module 01 ; ses voix demandent une formule ElevenLabs payante (ou le quota du mois suivant).
+1. Faire valider la démo v2 (`07-production/out/Demo_v2_douane_premium.mp4`) et les 2 modèles (`07-production/demo_v2/photos/`).
+2. Décider de la source des voix pour produire les modules (plus de crédits ElevenLabs sans accord) et du budget d'illustrations (~10 images par clip à 0,15 crédit).
 3. Continuer l'écriture des modules (02, 03, 06, puis 08 à 15) et vérifier les points 🔎 du module 05.

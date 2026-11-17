@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;700&family=Inter:wght@600;700;800&display=block">
+<style>
+/* Démo v2 « Import Mastery » : style éditorial (crème, cartes en éventail) + scènes 3D, 1920x1080.
+   Toutes les animations sont pilotées par renderAt(t) : une image = un instant t (rendu image par image). */
+:root {
+  --cream: #F4EDE2; --cream2: #EADFCF; --ink: #151413; --ink2: #3B352C;
+  --gold: #E9B649; --goldd: #B9821C; --coral: #E5623F; --lagon: #2FC9A8; --night: #0E1630;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+body { font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+.scene { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+.fill { position: absolute; inset: 0; }
+.bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+.vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(5, 8, 20, 0.55) 100%); pointer-events: none; }
+.serif { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+.w { display: inline-block; opacity: 0; will-change: transform, opacity; }
+
+/* ---------- crème éditoriale (scènes 1 et 6) ---------- */
+.cream { background: var(--cream); }
+.dots { position: absolute; inset: -60px; background-image: radial-gradient(#D6C8B4 2.3px, transparent 2.6px); background-size: 36px 36px; }
+.creamglow { position: absolute; inset: 0; background:
+  radial-gradient(900px 520px at 50% 18%, rgba(255, 255, 255, 0.8), transparent 70%),
+  radial-gradient(1300px 600px at 50% 115%, rgba(233, 182, 73, 0.22), transparent 70%); }
+.eyebrow { position: absolute; left: 0; right: 0; top: 64px; display: flex; justify-content: center; align-items: center; gap: 16px;
+  font: 700 26px/1 "JetBrains Mono", monospace; letter-spacing: 0.32em; color: #B4532F; opacity: 0; }
+.eyebrow .dot { width: 15px; height: 15px; border-radius: 50%; background: var(--coral); }
+.hA { position: absolute; left: 0; right: 0; top: 112px; text-align: center; font: 900 84px/1 "Inter Tight", sans-serif; letter-spacing: -0.045em; color: var(--ink); }
+.hB { position: absolute; left: 0; right: 0; top: 196px; text-align: center; font: 900 150px/1 "Inter Tight", sans-serif; letter-spacing: -0.05em; color: var(--ink); }
+.hB .serif { font-size: 176px; color: var(--goldd); letter-spacing: -0.02em; }
+.hC { position: absolute; left: 0; right: 0; top: 362px; text-align: center; font: 800 44px/1 "Inter Tight", sans-serif; letter-spacing: -0.02em; color: #8A7C69; }
+.chip { position: absolute; padding: 14px 22px; border-radius: 14px; background: #1A1714; color: #F4EDE2; font: 700 30px/1 "JetBrains Mono", monospace; opacity: 0; box-shadow: 0 12px 30px rgba(40, 25, 5, 0.25); }
+.chip b { color: var(--gold); }
+.card { position: absolute; width: 270px; height: 480px; left: -135px; top: -240px; border-radius: 30px; border: 9px solid #FFFDF8; background: #ddd; overflow: hidden;
+  box-shadow: 0 30px 60px rgba(60, 40, 10, 0.28), 0 6px 14px rgba(60, 40, 10, 0.18); opacity: 0; }
+.card img { width: 100%; height: 100%; object-fit: cover; }
+.card .glow { position: absolute; inset: -9px; border-radius: 30px; box-shadow: 0 0 0 7px var(--gold), 0 0 70px 18px rgba(233, 182, 73, 0.75); opacity: 0; }
+.tag { position: absolute; padding: 14px 24px; border-radius: 999px; background: var(--ink); color: var(--gold); font: 700 26px/1 "JetBrains Mono", monospace; letter-spacing: 0.08em; white-space: nowrap; opacity: 0; }
+
+/* ---------- cartes de texte sur les scènes 3D ---------- */
+.tcard { position: absolute; background: rgba(250, 245, 236, 0.96); border-radius: 34px; padding: 40px 48px; box-shadow: 0 30px 70px rgba(5, 10, 30, 0.35); opacity: 0; }
+.tcard .lab { font: 700 24px/1 "JetBrains Mono", monospace; letter-spacing: 0.22em; color: var(--goldd); margin-bottom: 22px; }
+.tcard .big { font: 900 74px/1.02 "Inter Tight", sans-serif; letter-spacing: -0.045em; color: var(--ink); }
+.tcard .big .serif { font-size: 96px; }
+.flag { display: inline-block; width: 66px; height: 46px; border-radius: 9px; overflow: hidden; vertical-align: middle; margin-right: 18px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); position: relative; }
+.flag.fr { background: linear-gradient(90deg, #1F3E9A 33.3%, #fff 33.3% 66.6%, #E1243A 66.6%); }
+.flag.us { background: repeating-linear-gradient(180deg, #C8283B 0 6.6px, #fff 6.6px 13.2px); }
+.flag.us::before { content: ""; position: absolute; left: 0; top: 0; width: 28px; height: 25px; background: #23336F; }
+.pill { display: flex; align-items: center; margin-top: 22px; padding: 18px 26px 18px 18px; border-radius: 22px; background: #fff; font: 800 44px/1 "Inter Tight", sans-serif; letter-spacing: -0.03em; color: var(--ink); box-shadow: 0 10px 24px rgba(10, 20, 50, 0.16); opacity: 0; }
+.ring { position: absolute; width: 200px; height: 200px; margin: -100px 0 0 -100px; border-radius: 50%; border: 7px solid var(--gold); box-shadow: 0 0 40px rgba(233, 182, 73, 0.8); opacity: 0; }
+.stamp { display: inline-block; margin: 12px 0 6px; padding: 6px 30px 10px; border: 10px solid var(--coral); border-radius: 18px; color: var(--coral); font: 900 150px/1 "Inter Tight", sans-serif; letter-spacing: -0.02em; opacity: 0; }
+
+/* ---------- scène Tahiti ---------- */
+.title5 { position: absolute; left: 0; right: 0; top: 70px; text-align: center; font: 900 104px/1 "Inter Tight", sans-serif; letter-spacing: -0.045em; color: #fff;
+  text-shadow: 0 6px 30px rgba(5, 15, 40, 0.55), 0 2px 4px rgba(0, 0, 0, 0.25); }
+.title5 .serif { font-size: 136px; color: var(--gold); }
+.kcard { position: absolute; top: 560px; width: 470px; height: 350px; border-radius: 34px; background: rgba(250, 245, 236, 0.97); box-shadow: 0 30px 70px rgba(5, 15, 40, 0.4);
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 30px; opacity: 0; }
+.kcard img { position: absolute; top: -70px; height: 230px; filter: drop-shadow(0 18px 18px rgba(30, 20, 5, 0.3)); }
+.kcard .k1 { font: 800 36px/1 "Inter Tight", sans-serif; letter-spacing: -0.02em; color: var(--ink2); }
+.kcard .k2 { font-size: 92px; line-height: 1; color: var(--goldd); }
+.kcard .mini { margin-left: 14px; padding: 8px 12px; border-radius: 10px; background: var(--ink); color: var(--gold); font: 700 22px/1 "JetBrains Mono", monospace; vertical-align: middle; }
+.dust { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255, 236, 170, 0.95), rgba(255, 220, 120, 0) 70%); }
+.spark { position: absolute; width: 10px; height: 10px; margin: -5px; background: #FFE59A; transform: rotate(45deg); border-radius: 2px; box-shadow: 0 0 14px #FFD25E; opacity: 0; }
+
+/* ---------- fin (crème) ---------- */
+.e-eyebrow { position: absolute; left: 180px; top: 250px; display: flex; align-items: center; gap: 16px; font: 700 28px/1 "JetBrains Mono", monospace; letter-spacing: 0.3em; color: #B4532F; opacity: 0; }
+.e-eyebrow .dot { width: 16px; height: 16px; border-radius: 50%; background: var(--coral); }
+.e-t1 { position: absolute; left: 172px; top: 310px; font: 900 168px/1 "Inter Tight", sans-serif; letter-spacing: -0.055em; color: var(--ink); opacity: 0; }
+.e-t2 { position: absolute; left: 180px; top: 470px; font-size: 196px; line-height: 1; color: var(--goldd); opacity: 0; }
+.e-sub { position: absolute; left: 186px; top: 700px; font: 600 42px/1.3 "Inter", sans-serif; color: #6B604F; opacity: 0; }
+.e-brand { position: absolute; left: 186px; bottom: 80px; font: 700 22px/1 "JetBrains Mono", monospace; letter-spacing: 0.26em; color: #A08F76; opacity: 0; }
+.mascot { position: absolute; width: 640px; left: 1150px; top: 270px; filter: drop-shadow(0 40px 40px rgba(80, 55, 20, 0.25)); opacity: 0; transform-origin: 50% 90%; }
+
+/* ---------- sous-titres mot à mot ---------- */
+#cap { position: absolute; left: 0; right: 0; bottom: 44px; display: flex; justify-content: center; pointer-events: none; }
+#cap .box { padding: 14px 26px; border-radius: 18px; background: rgba(8, 10, 18, 0.66); backdrop-filter: blur(6px); font: 800 40px/1.15 "Inter", sans-serif; letter-spacing: -0.01em; color: #fff; opacity: 0; }
+#cap .box span { transition: none; }
+#cap .on { color: var(--gold); }
+
+/* ---------- grain ---------- */
+#grain { position: absolute; inset: -100px; background-image: url("grain.png"); opacity: 0.07; mix-blend-mode: overlay; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<!-- 1 · ACCROCHE ÉDITORIALE -->
+<section class="scene cream" id="s1">
+  <div class="dots" id="dots1"></div><div class="creamglow"></div>
+  <div class="eyebrow" id="eb1"><span class="dot"></span>TU SAVAIS ?</div>
+  <div class="hA"><span class="w" id="a1">Si</span> <span class="w" id="a2">tu</span> <span class="w" id="a3">dois</span> <span class="w" id="a4">retenir</span></div>
+  <div class="hB"><span class="w" id="b1">UN</span> <span class="w" id="b2">seul</span> <span class="w serif" id="b3">module</span></div>
+  <div class="hC"><span class="w" id="c1">de toute cette formation…</span></div>
+  <div class="chip" id="chip1" style="left:1390px;top:368px">modules : <b>16</b></div>
+  <div id="fan" class="fill">
+    <div class="card" id="k0"><img src="../assets_hf/card_phone.jpg"></div>
+    <div class="card" id="k1"><img src="../assets_hf/card_factory.jpg"></div>
+    <div class="card" id="k3"><img src="../assets_hf/card_ship.jpg"></div>
+    <div class="card" id="k4"><img src="../assets_hf/card_scooter.jpg"></div>
+    <div class="card" id="k2"><img src="../assets_hf/card_douane.jpg"><div class="glow" id="k2glow"></div></div>
+  </div>
+  <div class="tag" id="tag1">MODULE 04 · LA DOUANE</div>
+</section>
+
+<!-- 2 · LE PIÈGE (colis qui tombent) -->
+<section class="scene" id="s2">
+  <div class="fill" id="cam2"><img class="bgimg" id="bg2" src="../assets_hf/b1_colis.jpg"><div class="vignette"></div></div>
+  <div class="tcard" id="t2" style="left:1110px;top:210px;width:720px">
+    <div class="lab">LE PIÈGE N°1</div>
+    <div class="big"><span class="w" id="t2a">C'est là que</span><br><span class="w" id="t2b">tout le monde</span><br><span class="w serif" id="t2c" style="color:var(--coral)">se plante.</span></div>
+  </div>
+</section>
+
+<!-- 3 · FORMATIONS FRANCE / USA -->
+<section class="scene" id="s3">
+  <div class="fill" id="cam3"><img class="bgimg" id="bg3" src="../assets_hf/b2_laptop.jpg">
+    <div class="ring" id="r3a" style="left:40.1%;top:45.4%"></div><div class="ring" id="r3b" style="left:47.9%;top:42.6%"></div>
+    <div class="vignette"></div></div>
+  <div class="tcard" id="t3" style="left:1090px;top:150px;width:760px">
+    <div class="lab">LE PROBLÈME</div>
+    <div class="big"><span class="w" id="t3a">Les formations</span><br><span class="w serif" id="t3b" style="color:var(--goldd)">en ligne…</span></div>
+    <div class="pill" id="p3a"><span class="flag fr"></span>Faites pour la France</div>
+    <div class="pill" id="p3b"><span class="flag us"></span>… ou les États-Unis</div>
+  </div>
+</section>
+
+<!-- 4 · JAMAIS -->
+<section class="scene" id="s4">
+  <div class="fill" id="cam4"><img class="bgimg" id="bg4" src="../assets_hf/b3_douane.jpg">
+    <div class="ring" id="r4" style="left:48.4%;top:27.5%;width:300px;height:300px;margin:-150px 0 0 -150px"></div>
+    <div class="vignette"></div></div>
+  <div class="tcard" id="t4" style="left:1130px;top:300px;width:700px;text-align:center">
+    <div class="big" style="font-size:64px"><span class="w" id="t4a">Elles parlent</span></div>
+    <div class="stamp" id="t4b">JAMAIS</div>
+    <div class="big"><span class="w serif" id="t4c" style="color:var(--goldd);font-size:84px">de notre douane.</span></div>
+  </div>
+</section>
+
+<!-- 5 · TAHITI : RÈGLES, TAXES, SYSTÈME -->
+<section class="scene" id="s5">
+  <div class="fill" id="cam5"><img class="bgimg" id="bg5" src="../assets_hf/b4_tahiti.jpg"><div class="vignette"></div><div class="fill" id="dustbox"></div></div>
+  <div class="title5"><span class="w" id="t5a">La douane de</span> <span class="w serif" id="t5b">Tahiti</span></div>
+  <div class="fill" id="sparks5"></div>
+  <div class="kcard" id="q1" style="left:185px"><img src="../assets_hf/icon_rules.png"><div class="k1">Ses propres</div><div class="k2 serif">règles</div></div>
+  <div class="kcard" id="q2" style="left:725px"><img src="../assets_hf/icon_coins.png"><div class="k1">Ses propres</div><div class="k2 serif">taxes</div></div>
+  <div class="kcard" id="q3" style="left:1265px"><img src="../assets_hf/icon_fenix.png"><div class="k1">Son propre</div><div class="k2"><span class="serif">système</span><span class="mini">FENIX</span></div></div>
+</section>
+
+<!-- 6 · FIN -->
+<section class="scene cream" id="s6">
+  <div class="dots" id="dots6"></div><div class="creamglow"></div>
+  <div class="e-eyebrow" id="e1"><span class="dot"></span>MODULE 04</div>
+  <div class="e-t1" id="e2">La douane</div>
+  <div class="e-t2 serif" id="e3">polynésienne</div>
+  <div class="e-sub" id="e4">Le module qui vaut le prix de la formation.</div>
+  <div class="e-brand" id="e5">IMPORT MASTERY · FENUA EDITION</div>
+  <img class="mascot" id="m6" src="../assets_hf/mascot.png">
+</section>
+
+<div id="cap"><div class="box" id="capbox"></div></div>
+<div id="grain"></div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const E = {
+  out: (p) => 1 - Math.pow(1 - p, 3),
+  inOut: (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2),
+  in: (p) => p * p * p,
+  back: (p) => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); },
+};
+function pop(el, t, t0, { dur = 0.42, dy = 34, s0 = 0.86, rot = 0 } = {}) {
+  const p = seg(t, t0, t0 + dur), e = E.back(p);
+  el.style.opacity = clamp(p * 2.2);
+  el.style.transform = `translateY(${(1 - e) * dy}px) scale(${s0 + (1 - s0) * e}) rotate(${rot * (1 - e)}deg)`;
+}
+function shake(t, t0, amp, dur = 0.35) {
+  if (t < t0 || t > t0 + dur) return [0, 0];
+  const k = 1 - (t - t0) / dur;
+  return [amp * k * Math.sin(t * 95), amp * 0.7 * k * Math.cos(t * 81)];
+}
+function vis(id, a, b, fin = 0.3, fout = 0.3) {   // opacité d'une scène
+  const t = window.__t;
+  return Math.min(seg(t, a, a + fin), 1 - seg(t, b - fout, b));
+}
+
+// ----- sous-titres : mots horodatés (temps absolus) -----
+const WORDS = [
+  ["Parce",5.50],["que",5.66],["c'est",5.82],["là",6.02],["que",6.22],["tout",6.50],["le",6.68],["monde",6.76],["se",6.90],["plante.",7.08,7.40],
+  ["Les",7.86],["formations",8.00],["que",8.24],["tu",8.52],["trouves",8.60],["en",8.86],["ligne,",8.94,9.20],
+  ["elles",9.36],["sont",9.56],["faites",9.70],["pour",9.88],["la",10.06],["France…",10.18,10.52],
+  ["ou",10.52],["pour",11.10],["les",11.32],["États-Unis.",11.44,12.30],
+  ["Elles",12.40],["parlent",12.58],["jamais",13.00],["de",13.38],["notre",13.62],["douane.",13.78,14.30],
+  ["Et",14.66],["notre",14.76],["douane,",14.92],["à",15.52],["Tahiti…",15.60,16.10],
+  ["elle",16.46],["a",16.54],["ses",16.64],["propres",16.76],["règles.",17.20,17.62],
+  ["Ses",17.74],["propres",17.94],["taxes.",18.38,18.80],
+  ["Son",19.04],["propre",19.18],["système.",19.48,20.00],
+];
+const CHUNKS = [[0,4],[4,10],[10,17],[17,23],[23,27],[27,33],[33,38],[38,43],[43,46],[46,49]];
+function caption(t) {
+  const box = $("capbox");
+  let shown = null;
+  for (const [a, b] of CHUNKS) {
+    const t0 = WORDS[a][1] - 0.08, last = WORDS[b - 1], t1 = (last[2] || last[1] + 0.4) + 0.08;
+    if (t >= t0 && t <= t1) { shown = [a, b, t0, t1]; break; }
+  }
+  if (!shown) { box.style.opacity = 0; return; }
+  const [a, b, t0, t1] = shown;
+  let html = "";
+  for (let i = a; i < b; i++) {
+    const w = WORDS[i], next = i + 1 < WORDS.length ? WORDS[i + 1][1] : w[1] + 0.5;
+    const on = t >= w[1] - 0.03 && t < (w[2] || next);
+    html += `<span class="${on ? "on" : ""}">${w[0]}</span>` + (i < b - 1 ? " " : "");
+  }
+  box.innerHTML = html;
+  box.style.opacity = Math.min(seg(t, t0, t0 + 0.12), 1 - seg(t, t1 - 0.1, t1));
+  box.style.transform = `translateY(${(1 - E.out(seg(t, t0, t0 + 0.18))) * 14}px)`;
+}
+
+// ----- poussières dorées (scène 5) -----
+const dust = [];
+(function () {
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 34; i++) {
+    const d = document.createElement("div"); d.className = "dust";
+    const s = 6 + rnd() * 16; d.style.width = d.style.height = s + "px";
+    $("dustbox").appendChild(d);
+    dust.push({ el: d, x: rnd() * 1920, y: 80 + rnd() * 520, sp: 12 + rnd() * 26, ph: rnd() * 6.28, a: 0.35 + rnd() * 0.5 });
+  }
+  for (let i = 0; i < 14; i++) {
+    const s = document.createElement("div"); s.className = "spark"; $("sparks5").appendChild(s);
+  }
+})();
+
+function renderAt(t) {
+  window.__t = t;
+  // ================= 1 · accroche =================
+  const s1 = $("s1");
+  const s1out = seg(t, 5.30, 5.72);
+  s1.style.opacity = 1 - seg(t, 5.50, 5.72);
+  s1.style.transformOrigin = "960px 650px";
+  s1.style.transform = `scale(${1 + 1.9 * E.in(s1out)})`;
+  s1.style.filter = `blur(${10 * E.in(s1out)}px)`;
+  $("dots1").style.transform = `translate(${-t * 7}px, ${-t * 4}px)`;
+  pop($("eb1"), t, 0.10, { dy: 20 });
+  [["a1", 0.60], ["a2", 0.94], ["a3", 1.06], ["a4", 1.22]].forEach(([id, t0]) => pop($(id), t, t0, { dy: 28 }));
+  [["b1", 1.76], ["b2", 2.06], ["b3", 2.36]].forEach(([id, t0]) => pop($(id), t, t0, { dy: 50, s0: 0.7 }));
+  pop($("c1"), t, 2.70, { dy: 18 });
+  pop($("chip1"), t, 3.10, { dy: 20, s0: 0.6, rot: -6 });
+  // éventail de cartes
+  const fan = [["k0", -20], ["k1", -10], ["k2", 0], ["k3", 10], ["k4", 20]];
+  const R = 1500, foc = E.back(seg(t, 4.36, 4.82));
+  fan.forEach(([id, ang], i) => {
+    const el = $(id), t0 = 2.48 + [0, 1, 4, 2, 3][i] * 0.11;
+    const p = seg(t, t0, t0 + 0.6), e = E.back(p);
+    const a = (ang * Math.PI) / 180;
+    let x = 960 + R * Math.sin(a), y = 752 + R * (1 - Math.cos(a));
+    const bob = Math.sin(t * 1.3 + i) * 6;
+    let sc = 0.82 + 0.18 * e, op = clamp(p * 2.5), rot = ang;
+    if (id === "k2") { sc *= 1 + 0.16 * foc; y -= 22 * foc; }
+    else { op *= 1 - 0.5 * foc; x += Math.sign(ang) * 46 * foc; sc *= 1 - 0.05 * foc; }
+    el.style.opacity = op;
+    el.style.transform = `translate(${x}px, ${y + (1 - e) * 420 + bob}px) rotate(${rot * (0.4 + 0.6 * e)}deg) scale(${sc})`;
+  });
+  $("k2glow").style.opacity = seg(t, 4.38, 4.7);
+  const tag = $("tag1");
+  pop(tag, t, 4.62, { dy: 20, s0: 0.7 });
+  tag.style.left = "794px"; tag.style.top = "985px";
+
+  // ================= 2 · le piège =================
+  const s2 = $("s2");
+  s2.style.opacity = seg(t, 5.42, 5.72) * (t < 7.66 ? 1 : 1 - 0.35 * seg(t, 7.66, 7.98));
+  s2.style.transform = `translateX(${-34 * E.inOut(seg(t, 7.64, 8.02))}%)`;
+  const [sx2, sy2] = shake(t, 7.10, 16, 0.42);
+  const p2 = seg(t, 5.42, 8.0);
+  $("bg2").style.transform = `translate(${sx2 - 18 * p2}px, ${sy2}px) scale(${1.17 - 0.07 * E.out(p2)})`;
+  pop($("t2"), t, 5.52, { dy: 0, s0: 0.9 }); $("t2").style.transform += ` translateX(${(1 - E.out(seg(t, 5.52, 5.95))) * 60}px)`;
+  pop($("t2a"), t, 5.95, { dy: 26 });
+  pop($("t2b"), t, 6.50, { dy: 26 });
+  pop($("t2c"), t, 7.08, { dy: 40, s0: 0.6, rot: -10 });
+  if (t > 7.08) $("t2c").style.transform += ` rotate(${-3 + 4 * Math.sin((t - 7.08) * 22) * Math.exp(-(t - 7.08) * 5)}deg)`;
+
+  // ================= 3 · formations France / USA =================
+  const s3 = $("s3");
+  const in3 = E.inOut(seg(t, 7.66, 8.04));
+  s3.style.opacity = t < 7.6 ? 0 : 1 - seg(t, 12.22, 12.46);
+  s3.style.transform = `translateX(${(1 - in3) * 100}%) scale(${1 + 0.25 * E.in(seg(t, 12.18, 12.46))})`;
+  s3.style.filter = `blur(${(1 - in3) * 10 + 8 * seg(t, 12.2, 12.46)}px)`;
+  const p3 = seg(t, 7.7, 12.4);
+  $("cam3").style.transformOrigin = "42% 44%";
+  $("cam3").style.transform = `scale(${1.04 + 0.12 * E.inOut(p3)})`;
+  pop($("t3"), t, 7.86, { dy: 30, s0: 0.92 });
+  pop($("t3a"), t, 7.90, { dy: 24 });
+  pop($("t3b"), t, 8.88, { dy: 24 });
+  pop($("p3a"), t, 10.18, { dy: 30, s0: 0.7 });
+  pop($("p3b"), t, 11.44, { dy: 30, s0: 0.7 });
+  [["r3a", 10.18], ["r3b", 11.44]].forEach(([id, t0]) => {
+    const p = seg(t, t0, t0 + 0.5), el = $(id);
+    el.style.opacity = t < t0 ? 0 : (1 - seg(t, t0 + 1.0, t0 + 1.5)) * clamp(p * 3);
+    el.style.transform = `scale(${0.4 + 0.6 * E.back(p)})`;
+  });
+
+  // ================= 4 · jamais =================
+  const s4 = $("s4");
+  const in4 = E.out(seg(t, 12.2, 12.55));
+  s4.style.opacity = t < 12.2 ? 0 : in4 * (1 - seg(t, 14.4, 14.75));
+  const [sx4, sy4] = shake(t, 13.0, 12, 0.32);
+  const p4 = seg(t, 12.2, 14.8);
+  $("cam4").style.transformOrigin = "48% 30%";
+  $("cam4").style.transform = `translate(${sx4}px, ${sy4}px) scale(${1.28 - 0.2 * in4 + 0.08 * E.inOut(p4)})`;
+  pop($("t4"), t, 12.36, { dy: 30, s0: 0.92 });
+  pop($("t4a"), t, 12.40, { dy: 22 });
+  { const p = seg(t, 13.0, 13.16), el = $("t4b");
+    el.style.opacity = clamp(p * 4);
+    el.style.transform = `rotate(-7deg) scale(${t < 13.0 ? 2.6 : 2.6 - 1.6 * E.back(p)})`; }
+  pop($("t4c"), t, 13.38, { dy: 26 });
+  { const p = seg(t, 13.78, 14.3), el = $("r4");
+    el.style.opacity = t < 13.78 ? 0 : clamp(p * 3) * (1 - seg(t, 14.4, 14.7));
+    el.style.transform = `scale(${0.5 + 0.5 * E.back(p)})`; }
+
+  // ================= 5 · Tahiti =================
+  const s5 = $("s5");
+  const in5 = E.out(seg(t, 14.42, 15.0));
+  s5.style.opacity = t < 14.42 ? 0 : in5;
+  const p5 = seg(t, 14.42, 20.4);
+  $("cam5").style.transformOrigin = "55% 58%";
+  $("cam5").style.transform = `scale(${1.34 - 0.2 * in5 + 0.08 * E.inOut(p5)})`;
+  dust.forEach((d) => {
+    const y = d.y - ((t * d.sp) % 600), x = d.x + Math.sin(t * 0.8 + d.ph) * 20;
+    d.el.style.transform = `translate(${x}px, ${((y % 640) + 640) % 640}px)`;
+    d.el.style.opacity = d.a * (0.6 + 0.4 * Math.sin(t * 2 + d.ph));
+  });
+  pop($("t5a"), t, 14.70, { dy: 30 });
+  pop($("t5b"), t, 15.60, { dy: 40, s0: 0.6 });
+  // éclats autour de « Tahiti »
+  Array.from($("sparks5").children).forEach((s, i) => {
+    const p = seg(t, 15.62, 16.4), ang = (i / 14) * Math.PI * 2, r = 60 + 190 * E.out(p);
+    s.style.opacity = t < 15.62 ? 0 : 1 - p;
+    s.style.left = 1190 + Math.cos(ang) * r * 1.6 + "px"; s.style.top = 140 + Math.sin(ang) * r * 0.6 + "px";
+  });
+  [["q1", 17.20], ["q2", 18.38], ["q3", 19.48]].forEach(([id, t0], i) => {
+    const el = $(id);
+    pop(el, t, t0, { dy: 90, s0: 0.5, rot: [-8, 6, -5][i] });
+    el.querySelector("img").style.transform = `translateY(${Math.sin(t * 2.2 + i) * 7}px) rotate(${Math.sin(t * 1.6 + i) * 3}deg)`;
+  });
+
+  // ================= 6 · fin =================
+  const s6 = $("s6");
+  const in6 = E.inOut(seg(t, 20.0, 20.42));
+  s6.style.opacity = t < 20.0 ? 0 : 1;
+  s6.style.clipPath = `inset(${(1 - in6) * 100}% 0 0 0 round ${40 * (1 - in6)}px)`;
+  $("dots6").style.transform = `translate(${-t * 7}px, ${-t * 4}px)`;
+  pop($("e1"), t, 20.32, { dy: 20 });
+  pop($("e2"), t, 20.42, { dy: 50, s0: 0.85 });
+  pop($("e3"), t, 20.58, { dy: 50, s0: 0.8 });
+  pop($("e4"), t, 20.90, { dy: 20 });
+  pop($("e5"), t, 21.10, { dy: 10 });
+  { const el = $("m6"), p = seg(t, 20.52, 21.2);
+    el.style.opacity = clamp(p * 4);
+    const y = (1 - E.back(p)) * 520, wave = t > 21.0 ? Math.sin((t - 21) * 5) * 3 : 0;
+    el.style.transform = `translateY(${y}px) rotate(${wave}deg) scale(${1 + 0.04 * Math.sin(t * 3)})`; }
+
+  caption(t);
+  $("grain").style.transform = `translate(${(Math.floor(t * 30) * 37) % 100 - 50}px, ${(Math.floor(t * 30) * 53) % 100 - 50}px)`;
+}
+
+window.prepare = async () => {
+  await document.fonts.ready;
+  await Promise.all(Array.from(document.images).map((im) => (im.complete ? im.decode().catch(() => {}) : new Promise((r) => { im.onload = r; im.onerror = r; }))));
+  renderAt(0);
+};
+window.renderAt = renderAt;
+</script>
+</body>
+</html>
