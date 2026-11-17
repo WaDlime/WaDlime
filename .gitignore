@@ -9,3 +9,7 @@
 07-production/assets_hf/*_raw.png
 07-production/assets_hf/*.wav
 __pycache__/
+07-production/demo_v3/frames/
+07-production/demo_v3/check/
+07-production/assets_v3/*_raw.png
+07-production/assets_v3/chk_*.png

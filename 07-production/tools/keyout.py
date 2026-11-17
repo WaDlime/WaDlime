@@ -16,7 +16,8 @@ border = np.concatenate([hsv[:8].reshape(-1, 3), hsv[-8:].reshape(-1, 3), hsv[:,
 bg_h = float(np.median(border[:, 0])) * 360 / 255
 dh = np.abs(((h - bg_h + 180) % 360) - 180)
 r, g, b = a[..., 0], a[..., 1], a[..., 2]
-green_dom = g - np.maximum(r, b)                      # le fond (et son ombre) est vert dominant
+MAGENTA = 250 < bg_h < 345                            # fond magenta : pour les sujets verts (billets…)
+green_dom = (np.minimum(r, b) - g) if MAGENTA else (g - np.maximum(r, b))   # dominance de la couleur du fond
 score = np.clip((24 - dh) / 10, 0, 1) * np.clip((s - 0.12) / 0.12, 0, 1) * np.clip(green_dom / 0.06, 0, 1)
 # ombres portées sur le fond : même teinte, plus sombres, moins saturées
 bg_v = float(np.median(border[:, 2])) / 255
@@ -74,9 +75,12 @@ keep_img = Image.fromarray((keep * 255).astype(np.uint8)).filter(ImageFilter.Max
 alpha = alpha * (np.asarray(keep_img).astype(np.float32) / 255.0)
 
 # suppression du reflet vert sur les bords
-spill = np.clip(g - np.maximum(r, b), 0, None)
-g2 = g - spill * 0.85
-out = np.dstack([r, g2, b, alpha])
+if MAGENTA:
+    spill = np.clip(np.minimum(r, b) - g, 0, None)
+    out = np.dstack([r - spill * 0.85, g, b - spill * 0.85, alpha])
+else:
+    spill = np.clip(g - np.maximum(r, b), 0, None)
+    out = np.dstack([r, g - spill * 0.85, b, alpha])
 img = Image.fromarray((np.clip(out, 0, 1) * 255).astype(np.uint8), "RGBA")
 bbox = img.getchannel("A").point(lambda p: 255 if p > 8 else 0).getbbox()
 img = img.crop(bbox) if bbox else img

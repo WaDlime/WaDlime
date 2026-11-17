@@ -42,7 +42,13 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 2. **Éthique** : jamais de sous-déclaration en douane, de contrefaçon, de faux avis ni de visuels IA trompeurs.
 3. **Chiffres d'exemple** (ex. montre à 5 000 XPF) : placeholders à remplacer par de vrais produits du créateur.
 
-## Direction visuelle des vidéos (démo v2 du 17/11/2026 — en attente de validation)
+## Direction visuelle v3 (17/11/2026 soir) — DA demandée par Naikishan, en attente de validation
+- **DA « dessin animé rétro »** inspirée de ses références (Picsou, Daffy, Monopoly, affiches « Money never sleeps », couverture « Forbes ») : gros trait noir, couleurs plates, affiches à typo condensée jaune contour noir (Anton), cases de BD crème à bord noir et ombre décalée, onomatopées (« BOUM ! »), billets et pièces qui tombent. Démo : `07-production/demo_v3/` → `out/Demo_v3_cartoon_retro.mp4`, images dans `07-production/assets_v3/`.
+- **Jamais les personnages des références** (Disney, Warner, Hasbro…) : uniquement le style, avec NOS personnages (le jeune Polynésien en chemise bleue, la mascotte colis à fleur de tiare). Prompt de style : « Classic 1950s golden-age American cartoon style, hand-drawn 2D cel animation, thick clean black outlines, flat bold colors… ».
+- Objets verts (billets) : générer sur fond **magenta** (`keyout.py` le gère).
+- But pédagogique rappelé : ludique, captivant, et surtout **que les élèves comprennent**.
+
+## Direction visuelle v2 (démo du 17/11/2026, remplacée par la v3 si validée)
 - L'utilisateur a refusé le style « diapos » : il veut du **premium**, **chaque phrase illustrée**, des **bruitages**, « un plaisir de regarder, donc d'apprendre ».
 - **Modèle A — éditorial** (réf. « Did you know ») : fond crème à points, titre noir très gras + mot clé en italique doré (Inter Tight + Instrument Serif), cartes illustrées en éventail. Pour accroches, chapitres, fins.
 - **Modèle B — scène 3D** (réf. personnages low-poly) : personnage polynésien (t-shirt bleu) dans son décor, carte crème de texte, tampons, anneaux qui pointent l'image, sous-titres mot à mot (mot actif en or). Pour raconter et expliquer.
@@ -82,7 +88,7 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - CapCut : l'utilisateur prévoit de le connecter pour le montage. À vérifier quand c'est fait : pas de connecteur officiel connu ; seuls des serveurs MCP communautaires non officiels existent (VectCutAPI + capcut-mcp-server, en local, export MP4 manuel). Recommandé : générer voix et visuels avec ElevenLabs/Higgsfield, monter dans CapCut à la main.
 - Chaque génération IA consomme des crédits : demander confirmation avant les générations coûteuses.
 - **Consigne du 17/11/2026 : ne plus dépenser de crédits ElevenLabs** sans nouvel accord de l'utilisateur.
-- **Higgsfield : compte gratuit, 7,9 crédits restants** (17/11). Seul `z_image` est ouvert (0,15 crédit l'image, 2048 px, très bon rendu 3D stylisé, pas d'image de référence) ; GPT Image demande une formule payante ; générations une par une (limite de débit) ; animation vidéo IA hors budget (10 à 35 crédits / 5 s) ; musique 4,36 crédits / 30 s → musique et bruitages faits en local.
+- **Higgsfield : compte gratuit, environ 6,4 crédits restants** (17/11 soir). Seul `z_image` est ouvert (0,15 crédit l'image, 2048 px, très bon rendu 3D stylisé, pas d'image de référence) ; GPT Image demande une formule payante ; générations une par une (limite de débit) ; animation vidéo IA hors budget (10 à 35 crédits / 5 s) ; musique 4,36 crédits / 30 s → musique et bruitages faits en local.
 - **ElevenLabs : compte en formule gratuite** (10 000 crédits/mois ≈ 1 crédit par caractère, générations gratuites parfois saturées, **pas de licence commerciale**). Les voix finales de la formation (vendue) doivent être générées avec une formule payante (Starter minimum). Toute la formation ≈ 133 000 caractères. Générer avec `generations_count: 1` pour économiser.
 - **CapCut** est installé sur l'ordinateur de l'utilisateur (pas de connecteur dans cette session) : on lui livre des MP4 finis + les SRT, il peut retoucher dans CapCut.
 
