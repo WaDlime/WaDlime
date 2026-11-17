@@ -20,6 +20,7 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - L'utilisateur communique en français familier et préfère des réponses structurées, actionnables, sans remplissage.
 
 ## Structure du dossier
+- `00-PASSATION_Claude_Code_Desktop.md` : **historique complet de la conversation des 16-17/11/2026** (décisions, refus, état, comptes et crédits, méthode vidéo v2). À lire en premier sur un nouvel ordinateur.
 - `01-blueprint/` : document maître (13 modules + stratégie de vente : offre 3 niveaux, garantie, tunnel, lancement 90 jours).
 - `02-scripts-video/` : sommaire + **14 scripts vidéo** (Module 00 à 13), ~75 vidéos, ~3h40. Format : `[CAM]` (ce qu'il dit), `[ÉCRAN]`, `[B-ROLL]`, `[TON]`, exercice de fin, checklist de tournage.
 - `01-blueprint/PLAN_Gamme_et_Sommaire.md` : la gamme (entrée gratuite, formation, accompagnement), le sommaire en 16 modules avec ce qui est déjà écrit et ce qui reste à écrire, les faits douane vérifiés (particulier ou vendeur).
