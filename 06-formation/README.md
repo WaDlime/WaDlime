@@ -39,7 +39,7 @@ Le module **08 « Te mettre en règle »** arrive au moment de vendre, pas au d�
 | # | Module | Fichier | Statut |
 |---|---|---|---|
 | 00 | Fondations & état d'esprit | `Module_00_Fondations.md` | ✅ Prêt |
-| 01 | Trouver quoi vendre | `Module_01_Trouver_quoi_vendre.md` | ✅ Écrit (7 clips, dont « pourquoi chez toi plutôt que sur Shein ») |
+| 01 | Trouver quoi vendre | `Module_01_Trouver_quoi_vendre.md` | ✅ Écrit (8 clips, dont « pourquoi chez toi plutôt que sur Shein » et « tout peut se vendre, tout dépend comment tu le vends ») |
 | 02 | Sourcing & négociation | — | ⏳ À convertir (+ 3 leçons) |
 | 03 | Transport, de la Chine à Tahiti | — | ⏳ À convertir (+ 2 leçons, 🔎) |
 | 04 | ⭐ La douane polynésienne | `Module_04_Douane.md` | ✅ Prêt |

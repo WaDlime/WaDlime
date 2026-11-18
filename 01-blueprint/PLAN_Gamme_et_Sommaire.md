@@ -48,7 +48,7 @@
 7. vendre (Facebook, Instagram, TikTok, Meta Ads, visuels avec l'IA) ;
 8. livrer, fidéliser et grandir.
 
-**Format :** 16 modules · 93 vidéos · ~4 h 30 · **79 vidéos déjà écrites (85 %)**. Les scripts finaux sont au format voix IA dans `06-formation/` (voix « Bastien »). Ils servent aussi de prompteur si Naikishan filme lui-même.
+**Format :** 16 modules · 94 vidéos · ~4 h 35 · **80 vidéos déjà écrites (85 %)**. Les scripts finaux sont au format voix IA dans `06-formation/` (voix « Bastien »). Ils servent aussi de prompteur si Naikishan filme lui-même.
 
 **Légende :** ✅ prêt dans `06-formation/` · ♻️ déjà écrit (ex-XX = numéro d'origine dans `02-scripts-video/`) · ➕ leçons ou ajouts à écrire · 🆕 module nouveau · 🔎 faits à vérifier
 
@@ -57,10 +57,11 @@
 | # | Module | Vidéos | Durée | Statut |
 |---|---|---|---|---|
 | 00 | **Fondations & état d'esprit** : la chaîne de valeur, les 3 modèles (stock, précommande, hybride), la formule du profit, ta calculatrice | 5 | ~13 min | ✅ |
-| 01 | **Trouver quoi vendre** : idées produit, les 7 critères d'un bon produit au fenua, valider la demande avant de dépenser, repérer un faux marché, la grille de scoring | 7 | ~19 min | ♻️ ex-01 · ➕ |
+| 01 | **Trouver quoi vendre** : idées produit (le fenua + les USA), les 7 critères pour commencer, pourquoi chez toi, tout peut se vendre (se démarquer), valider la demande avant de dépenser, repérer un faux marché, la grille de scoring | 8 | ~23 min | ✅ écrit |
 
 - ➕ **01 · nouvelle leçon : « Pourquoi on achète chez toi plutôt que sur Shein »** (rapidité, confiance, garantie, conseil, livraison).
 - ➕ **01 · leçon « valider la demande »** : le post test et la petite pub se font sans encaisser. La précommande (étage 3), c'est déjà vendre : elle vient après les papiers (module 08).
+- ➕ **01 · ajouts du 18/11/2026 (Naikishan)** : regarder les USA (souvent en avance, et les Polynésiens aiment l'Amérique) · les 7 critères « pour commencer » · nouvelle leçon « Tout peut se vendre, tout dépend comment tu le vends » (marché saturé ou prouvé, exemple des marques de vêtements, leviers service / angle / pack / design, jamais de copie).
 
 ### PARTIE 2 — SAVOIR IMPORTER
 

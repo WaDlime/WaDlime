@@ -53,8 +53,9 @@ Une calculatrice de rentabilité (Excel/Google Sheet) où l'élève entre ses ch
 
 ### A. Trouver des idées produit (sourcing d'idées)
 - **Espionner ce qui marche déjà au fenua** : scroll les pages FB/Insta des vendeurs locaux actifs, regarde les posts avec le plus de commentaires/partages = preuve de demande locale. Note les prix pratiqués.
-- **Outils** : TikTok Creative Center (produits tendances), AliExpress « best sellers », Amazon Movers & Shakers, Google Trends (filtre « monde » car PF a peu de volume), Pinterest tendances.
-- **Critères d'un bon produit pour Tahiti** :
+- **Regarder les USA** : ce sont souvent eux qui ont un temps d'avance sur les tendances, et les Polynésiens aiment l'Amérique (streetwear, sneakers, sport et style US). Ce qui cartonne là-bas aujourd'hui a de bonnes chances de plaire au fenua demain. Nuance : tout ce qui marche aux USA ne marche pas ici (hiver, grandes maisons, marché énorme) → on prend l'idée et on la passe dans les critères.
+- **Outils** : TikTok Creative Center (produits tendances, réglé sur les USA), AliExpress « best sellers », Amazon USA (meilleures ventes et Movers & Shakers), Google Trends (filtres « États-Unis » et « monde » car PF a peu de volume), Pinterest tendances.
+- **Critères d'un bon produit pour Tahiti — pour commencer** (le premier produit doit être simple : facile à importer, facile à vendre ; le cadre s'élargit avec l'expérience) :
   - Léger et compact (le transport aérien coûte au poids → un produit lourd te tue la marge).
   - Marge x3 minimum (prix de vente ≥ 3× coût rendu).
   - Effet « wow » / visuel (ça doit stopper le scroll sur FB).
@@ -64,10 +65,12 @@ Une calculatrice de rentabilité (Excel/Google Sheet) où l'élève entre ses ch
 
 ### B. Valider la demande (le testing) — AVANT de dépenser
 La plus grosse erreur du débutant : acheter 100 unités d'un produit qu'il « sent bien ». On valide d'abord.
-1. **Test page / post** : crée un post FB/Insta avec une belle photo du produit (prise sur le fournisseur ou générée), un prix, et un appel à l'action « DM pour commander / précommande ». Mesure les réactions, commentaires, DM.
+1. **Test page / post** : crée un post FB/Insta avec une belle photo du produit (celle du fournisseur, jamais un visuel IA trompeur), un prix, et un appel à l'action « Bientôt dispo, ça t'intéresse ? Écris-moi » (sans encaisser). Mesure les réactions, commentaires, DM.
 2. **Test pub à petit budget** : 1 000-2 000 XPF de pub Meta ciblée Polynésie, objectif « messages » ou « clics ». Si tu obtiens des DM/clics pas chers → demande validée.
-3. **Précommande réelle** : le vrai test = est-ce que des gens PAIENT avant que tu aies le stock ? Si 5 personnes paient un acompte, tu as ton signal. 0 paiement = produit mort, tu viens d'économiser 100 000 XPF.
-4. **Le test du « ça existe déjà ? »** : si 4 vendeurs locaux le vendent déjà → marché saturé OU marché prouvé. À toi de te différencier (prix, service, angle, bundle).
+3. **Précommande réelle** : le vrai test = est-ce que des gens PAIENT avant que tu aies le stock ? Si 5 personnes paient un acompte, tu as ton signal. 0 paiement = produit mort, tu viens d'économiser 100 000 XPF. ⚠️ La précommande, c'est déjà vendre : elle vient après les papiers (module 08 « Te mettre en règle »).
+4. **Le test du « ça existe déjà ? »** : si 4 vendeurs locaux le vendent déjà → marché saturé OU marché prouvé. À toi de te différencier (service, angle, bundle, design ; le prix = le levier le plus faible).
+   - ✦ **À RETENIR : tout peut se vendre, tout dépend de COMMENT tu le vends.** Exemple des vêtements : à l'international comme au fenua, énormément de gens veulent créer leur marque ; celles qui arrivent à vendre sont celles qui savent se différencier (designs originaux, innovants, des choses jamais vues, ou une chose que tout le monde fait, mais en mieux).
+   - Limites : « tout » = tout ce qui est autorisé (module 05) ; se différencier = créer SA version, jamais copier un design ou un logo (contrefaçon).
 
 ### C. Détecter une arnaque produit (et un faux marché)
 - Méfie-toi des produits « miracle » (santé, minceur, gadgets trop beaux) → souvent invendables ou réglementés.

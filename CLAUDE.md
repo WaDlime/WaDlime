@@ -8,7 +8,7 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 
 ## La gamme (décidée le 17/11/2026, version 2 — détail dans `01-blueprint/PLAN_Gamme_et_Sommaire.md`)
 - **Entrée gratuite** : posts, vidéos courtes, PDF « Les 5 erreurs qui te font perdre de l'argent en important à Tahiti », extrait du module douane. Toujours adressée à des futurs vendeurs.
-- **Offre 1 — La formation « Créer ton business d'import au fenua »** : une seule formation complète, 16 modules en 4 parties (les bases, savoir importer, vendre au fenua, grandir), ~93 vidéos, ~4 h 30. Ordre validé le 17/11/2026 : « Te mettre en règle » en module 08, au début de la partie vente (l'administratif en premier bloque les débutants).
+- **Offre 1 — La formation « Créer ton business d'import au fenua »** : une seule formation complète, 16 modules en 4 parties (les bases, savoir importer, vendre au fenua, grandir), ~94 vidéos, ~4 h 35. Ordre validé le 17/11/2026 : « Te mettre en règle » en module 08, au début de la partie vente (l'administratif en premier bloque les débutants).
 - **Offre 2 — L'accompagnement** : la formation + une dizaine d'élèves suivis (Naikishan + équipe + Claude) jusqu'à leur premier revenu, avec outils et techniques réservés.
 - **Outils bonus (plus tard)** : gestionnaire de stock, compta (base : l'outil fait pour Te Naiki Nui), calculateur de douane.
 - **Abandonné (ne pas reproposer)** : une formation « Savoir importer » pour le grand public. Elle apprenait aux clients des revendeurs à se passer d'eux (conflit avec les élèves vendeurs et avec les boutiques de Naikishan), et les consommateurs paient peu pour ça. Jamais de promesse du type « économise en important toi-même ».
@@ -40,7 +40,8 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
    - Les fourchettes (ex. « +25 à +40 % de taxes ») sont des ordres de grandeur, jamais des garanties.
    - Le créateur n'est ni douanier ni conseiller fiscal : le dire dans les vidéos.
 2. **Éthique** : jamais de sous-déclaration en douane, de contrefaçon, de faux avis ni de visuels IA trompeurs.
-3. **Chiffres d'exemple** (ex. montre à 5 000 XPF) : placeholders à remplacer par de vrais produits du créateur.
+3. **Principes de Naikishan (18/11/2026), à garder dans tous les modules** : « tout peut se vendre, tout dépend de COMMENT tu le vends » (se démarquer : design original, innovant, jamais vu, ou la même chose en mieux ; jamais de copie) ; regarder les USA pour les tendances (souvent en avance, et les Polynésiens aiment l'Amérique), en passant toujours l'idée dans les critères locaux.
+4. **Chiffres d'exemple** (ex. montre à 5 000 XPF) : placeholders à remplacer par de vrais produits du créateur.
 
 ## Direction visuelle v3 (17/11/2026 soir) — DA demandée par Naikishan, en attente de validation
 - **DA « dessin animé rétro »** inspirée de ses références (Picsou, Daffy, Monopoly, affiches « Money never sleeps », couverture « Forbes ») : gros trait noir, couleurs plates, affiches à typo condensée jaune contour noir (Anton), cases de BD crème à bord noir et ombre décalée, onomatopées (« BOUM ! »), billets et pièces qui tombent. Démo : `07-production/demo_v3/` → `out/Demo_v3_cartoon_retro.mp4`, images dans `07-production/assets_v3/`.
@@ -82,7 +83,7 @@ Créateur : Naikishan, Papeete. Il gère déjà Opu Ara Store (tech, montres, ac
 - [x] Voix IA « Bastien » validée par l'utilisateur (17/11/2026)
 - [x] Plan v2.1 validé (17/11/2026) : formation unique + accompagnement, 16 modules, « Te mettre en règle » en 08
 - [x] Module 05 « Produits interdits et réglementés » écrit (`06-formation/Module_05_Produits_interdits.md`) — points 🔎 à vérifier avant publication
-- [x] Module 01 « Trouver quoi vendre » écrit en voix IA (7 clips)
+- [x] Module 01 « Trouver quoi vendre » écrit en voix IA (8 clips ; ajouts du 18/11 : regarder les USA, critères « pour commencer », clip 1.4 « Tout peut se vendre, tout dépend comment tu le vends »)
 - [x] Chaîne de montage vidéo (`07-production/`) + vidéo démo validée techniquement + scènes des 5 clips du module 00
 - [x] Démo v2 premium (23 s, début du module 04, voix déjà générée) + 2 images modèles — **en attente de validation**
 - [ ] Vidéos de la partie 1 (modules 00 et 01) : choisir la source des voix (l'utilisateur ne veut plus dépenser de crédits ElevenLabs), puis illustrer chaque phrase dans le style v2
