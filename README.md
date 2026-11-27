@@ -34,18 +34,27 @@ Fichier : [`pine/xauusd_mss_fibo_fvg.pine`](pine/xauusd_mss_fibo_fvg.pine)
   - la zone n'est pas touchée dans les 50 bougies qui suivent ;
   - un MSS se produit dans le sens opposé.
 
-### 4. Confirmation FVG
-- Après le retest, il faut un **FVG dans le sens du MSS** :
-  - pour un achat, le plus bas de la bougie 3 est au-dessus du plus haut de la bougie 1, et la bougie 2 est haussière ;
-  - pour une vente, c'est l'inverse.
-- Par défaut, le FVG doit **partir de la zone** : l'une des deux premières bougies du FVG a touché la zone.
-- Le FVG doit apparaître dans les **10 bougies** qui suivent le retest. Passé ce délai, le setup est annulé.
-- **Entrée** : à la clôture de la bougie qui valide le FVG.
+### 4. Confluence ou confirmation (paramètre `Mode d'entrée`)
+
+**Confluence : FVG/OB dans la zone** (par défaut)
+- La zone Fibo 0.618 – 0.786 doit contenir **un FVG laissé par l'impulsion** ou **l'Order Block d'origine** (la dernière bougie opposée avant le départ de l'impulsion).
+- Un **ordre limite** est placé sur le bord de cette confluence, c'est-à-dire le premier prix touché quand le prix revient.
+- Le SL est placé derrière le niveau 1 du Fibo, avec une marge.
+- Si le prix touche la zone sans qu'il y ait de FVG ni d'OB dedans, le setup est annulé.
+
+**Confirmation : FVG après le retest**
+- Après le retest, il faut un **nouveau FVG** dans le sens du MSS, qui part de la zone et apparaît dans les 10 bougies.
+- L'entrée se fait à la clôture de la bougie qui valide ce FVG.
+
+**Les deux (le plus strict)**
+- Il faut une confluence FVG/OB dans la zone, **puis** un nouveau FVG après le retest.
+
+La confluence donne une meilleure entrée et un meilleur R:R, mais aucune preuve que le prix réagit. La confirmation entre plus tard, mais seulement si le prix a réagi.
 
 ### Gestion du risque
 | Élément | Par défaut | Options |
 |---|---|---|
-| Stop loss | Sous/au-dessus de l'extrême du retest + 0.2 × ATR | Ou derrière l'origine de l'impulsion (Fibo 1) |
+| Stop loss | Derrière l'extrême du retest + 0.2 × ATR (en mode Confluence : derrière le Fibo 1) | Ou derrière l'origine de l'impulsion (Fibo 1) |
 | Take profit | R:R de 2 | Extension Fibo -0.272, ou fin de l'impulsion (Fibo 0) |
 | Filtre R:R | Trade ignoré si R:R < 1.5 | — |
 | Taille de position | 1 % du capital risqué par trade | — |

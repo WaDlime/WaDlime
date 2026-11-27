@@ -5,8 +5,12 @@
 //  1. MSS   : clôture au-delà du dernier swing opposé à la tendance en cours
 //  2. Fibo  : tracé du début de l'impulsion (100 %) à sa fin (0 %)
 //  3. Retest: le prix revient dans la zone Fibo (par défaut 0.618 – 0.786)
-//  4. FVG   : un Fair Value Gap dans le sens du MSS se forme après le retest
-//             -> entrée à la clôture de la bougie qui valide le FVG
+//  4. Confirmation, au choix :
+//     - Confluence (par défaut) : un FVG de l'impulsion ou l'OB d'origine se
+//       trouve dans la zone Fibo -> ordre limite sur le bord de la confluence
+//     - Confirmation : un nouveau FVG se forme après le retest -> entrée à la
+//       clôture de la bougie qui le valide
+//     - Les deux : confluence obligatoire + nouveau FVG après le retest
 // ============================================================================
 strategy("XAUUSD – MSS + Fibo + Retest + FVG", shorttitle = "XAU MSS/FVG", overlay = true,
      initial_capital = 10000, pyramiding = 0, process_orders_on_close = true,
@@ -26,13 +30,21 @@ fibB        = input.float(0.786, "Zone de retest : niveau 2", step = 0.001, grou
 extendImp   = input.bool(true, "Prolonger la fin de l'impulsion tant que la zone n'est pas touchée", group = grpF)
 setupExpiry = input.int(50, "Expiration si pas de retest (barres)", minval = 1, group = grpF)
 
-grpV = "3. Confirmation FVG"
+grpV = "3. Confluence & confirmation"
+MODE_CONF = "Confluence : FVG/OB dans la zone"
+MODE_FVG  = "Confirmation : FVG après le retest"
+MODE_BOTH = "Les deux (le plus strict)"
+entryMode   = input.string(MODE_CONF, "Mode d'entrée", options = [MODE_CONF, MODE_FVG, MODE_BOTH], group = grpV,
+     tooltip = "Confluence : ordre limite si un FVG de l'impulsion ou l'OB d'origine est dans la zone Fibo.\nConfirmation : entrée quand un nouveau FVG se forme après le retest.\nLes deux : confluence obligatoire, puis nouveau FVG.")
+useConfFvg  = input.bool(true, "Confluence : FVG de l'impulsion", group = grpV)
+useConfOb   = input.bool(true, "Confluence : Order Block d'origine", group = grpV)
+obLookback  = input.int(10, "Recherche de l'OB (barres avant l'origine)", minval = 0, maxval = 50, group = grpV)
+fvgMinAtr   = input.float(0.05, "Taille min. d'un FVG (x ATR)", minval = 0, step = 0.05, group = grpV)
 fvgWindow   = input.int(10, "Délai max après le retest (barres)", minval = 1, group = grpV)
-fvgMinAtr   = input.float(0.05, "Taille min. du FVG (x ATR)", minval = 0, step = 0.05, group = grpV)
-fvgFromZone = input.bool(true, "Le FVG doit partir de la zone", group = grpV)
+fvgFromZone = input.bool(true, "Confirmation : le FVG doit partir de la zone", group = grpV)
 
 grpR = "4. Gestion du risque"
-slMode   = input.string("Extrême du retest", "Stop loss", options = ["Extrême du retest", "Origine de l'impulsion (Fibo 1)"], group = grpR)
+slMode   = input.string("Extrême du retest", "Stop loss (le mode Confluence utilise toujours le Fibo 1)", options = ["Extrême du retest", "Origine de l'impulsion (Fibo 1)"], group = grpR)
 slBufAtr = input.float(0.2, "Marge du SL (x ATR)", minval = 0, step = 0.05, group = grpR)
 tpMode   = input.string("Ratio R:R", "Take profit", options = ["Ratio R:R", "Extension Fibo", "Fin de l'impulsion (Fibo 0)"], group = grpR)
 rrTarget = input.float(2.0, "R:R cible (mode Ratio R:R)", minval = 0.1, step = 0.1, group = grpR)
@@ -59,6 +71,42 @@ colBear  = input.color(color.red, "Couleur vente", group = grpD)
 // Niveau Fibo tracé de l'origine (1) vers la fin de l'impulsion (0).
 // r < 0 donne une extension au-delà de la fin de l'impulsion.
 fibLevel(float origin, float end, float r) => end - (end - origin) * r
+
+// Cherche une confluence dans la zone [zLo, zHi] : un FVG laissé par l'impulsion
+// (depuis fromBar) ou l'Order Block d'origine (dernière bougie opposée à l'origine).
+// Renvoie le prix d'entrée (premier bord touché par le retest) et le type trouvé.
+findConfluence(int d, int fromBar, float zLo, float zHi, float minGap) =>
+    float edge = na
+    string kind = ""
+    n = math.min(bar_index - fromBar, 400)
+    if useConfFvg and n >= 2
+        for i = 0 to n - 2
+            gLo = d == 1 ? high[i + 2] : high[i]
+            gHi = d == 1 ? low[i] : low[i + 2]
+            if gHi > gLo and gHi - gLo >= minGap and gHi >= zLo and gLo <= zHi
+                e = d == 1 ? math.min(gHi, zHi) : math.max(gLo, zLo)
+                if na(edge) or (d == 1 ? e > edge : e < edge)
+                    edge := e
+                kind := "FVG"
+    start = bar_index - fromBar
+    if useConfOb and start + obLookback <= 450
+        for i = start to start + obLookback
+            if d == 1 ? close[i] < open[i] : close[i] > open[i]
+                if high[i] >= zLo and low[i] <= zHi
+                    e = d == 1 ? math.min(high[i], zHi) : math.max(low[i], zLo)
+                    if na(edge) or (d == 1 ? e > edge : e < edge)
+                        edge := e
+                    kind := kind == "" ? "OB" : "FVG + OB"
+                break
+    [edge, kind]
+
+calcTP(bool isLong, float entry, float risk, float o, float e) =>
+    switch tpMode
+        "Ratio R:R"      => isLong ? entry + risk * rrTarget : entry - risk * rrTarget
+        "Extension Fibo" => fibLevel(o, e, -tpExt)
+        => e
+
+calcQty(float risk) => math.floor(strategy.equity * riskPct / 100 / (risk * syminfo.pointvalue) / qtyStep) * qtyStep
 
 // ───────────────────────────── Structure ─────────────────────────────
 atr       = ta.atr(atrLen)
@@ -92,6 +140,9 @@ var int   setupBar  = na
 var bool  touched   = false
 var int   touchBar  = na
 var float retestExt = na    // extrême atteint pendant le retest
+var float confEdge  = na    // prix d'entrée de la confluence FVG/OB
+var string confKind = ""
+var bool  pending   = false // ordre limite en attente (mode Confluence)
 
 var levels   = array.from(0.0, 0.5, 0.618, 0.705, 0.786, 1.0)
 var fibLines = array.new<line>()
@@ -99,6 +150,11 @@ var box zoneBox = na
 
 int  newDir   = 0
 bool newIsMSS = false
+
+// Ordre limite exécuté : le setup est consommé
+if pending and strategy.position_size != 0
+    pending := false
+    dir     := 0
 
 if not shBroken and not na(shPrice) and close > shPrice
     shBroken := true
@@ -147,6 +203,8 @@ if newDir != 0
         touched   := false
         touchBar  := na
         retestExt := na
+        confEdge  := na
+        confKind  := ""
         col = isLong ? colBull : colBear
 
         if showMSS
@@ -166,15 +224,31 @@ if newDir != 0
                  bgcolor = color.new(col, 85), text = str.format("{0} – {1}", fibA, fibB), text_size = size.small,
                  text_color = col, text_halign = text.align_right)
 
-// ───────────────────────────── Retest + FVG ─────────────────────────────
+// ───────────────────────────── Retest + confluence / FVG ─────────────────────────────
 bool entrySignal = false
 bool cancel      = false
+modeConf = entryMode == MODE_CONF
+modeBoth = entryMode == MODE_BOTH
+
+// Un nouveau setup ou un MSS opposé annule l'ordre limite en attente
+if pending and (dir == 0 or setupBar == bar_index)
+    strategy.cancel("Achat")
+    strategy.cancel("Vente")
+    pending := false
 
 if dir != 0 and bar_index > setupBar
     isLong = dir == 1
+    id     = isLong ? "Achat" : "Vente"
     if not touched and extendImp and (isLong ? high > impEnd : low < impEnd)
         impEnd := isLong ? high : low
-    zNear = fibLevel(orig, impEnd, math.min(fibA, fibB))
+    zA    = fibLevel(orig, impEnd, fibA)
+    zB    = fibLevel(orig, impEnd, fibB)
+    zNear = isLong ? math.max(zA, zB) : math.min(zA, zB)
+
+    if not touched and (modeConf or modeBoth)
+        [cEdge, cKind] = findConfluence(dir, origBar, math.min(zA, zB), math.max(zA, zB), fvgMinAtr * atr)
+        confEdge := cEdge
+        confKind := cKind
 
     if isLong ? low < orig : high > orig
         cancel := true  // l'origine de l'impulsion est cassée : setup invalidé
@@ -183,19 +257,47 @@ if dir != 0 and bar_index > setupBar
             touched   := true
             touchBar  := bar_index
             retestExt := isLong ? low : high
-        if touched
+        if modeConf
+            if na(confEdge)
+                if touched
+                    cancel := true  // retest sans FVG ni OB dans la zone : pas de trade
+            else if not touched
+                // Ordre limite sur le bord de la confluence, mis à jour tant que la zone n'est pas atteinte
+                buf    = slBufAtr * atr
+                sl     = isLong ? orig - buf : orig + buf
+                risk   = math.abs(confEdge - sl)
+                tp     = calcTP(isLong, confEdge, risk, orig, impEnd)
+                reward = isLong ? tp - confEdge : confEdge - tp
+                qty    = risk > 0 ? calcQty(risk) : 0.0
+                if inSession and strategy.position_size == 0 and risk > 0 and reward / risk >= minRR and qty > 0
+                    if not pending
+                        alert(str.format("XAUUSD {0} limite {1} ({2} dans la zone Fibo) | SL {3} | TP {4}", id, confEdge, confKind, sl, tp), alert.freq_once_per_bar_close)
+                    strategy.entry(id, isLong ? strategy.long : strategy.short, qty = qty, limit = confEdge)
+                    strategy.exit(id + " SL/TP", id, stop = sl, limit = tp)
+                    pending := true
+                else if pending
+                    strategy.cancel(id)
+                    pending := false
+            if not cancel
+                if touched and bar_index - touchBar >= fvgWindow
+                    cancel := true
+                else if not touched and bar_index - setupBar > setupExpiry
+                    cancel := true
+        else if touched
             retestExt := isLong ? math.min(retestExt, low) : math.max(retestExt, high)
             bullFvg  = low > high[2] and close[1] > open[1] and low - high[2] >= fvgMinAtr * atr
             bearFvg  = high < low[2] and close[1] < open[1] and low[2] - high >= fvgMinAtr * atr
             fromZone = not fvgFromZone or (isLong ? math.min(low[1], low[2]) <= zNear : math.max(high[1], high[2]) >= zNear)
-            if (isLong ? bullFvg : bearFvg) and fromZone and bar_index > touchBar and inSession and strategy.position_size == 0
+            if modeBoth and confKind == ""
+                cancel := true  // mode strict : pas de confluence FVG/OB dans la zone
+            else if (isLong ? bullFvg : bearFvg) and fromZone and bar_index > touchBar and inSession and strategy.position_size == 0
                 entrySignal := true
             else if bar_index - touchBar >= fvgWindow
                 cancel := true
         else if bar_index - setupBar > setupExpiry
             cancel := true
 
-// ───────────────────────────── Entrée ─────────────────────────────
+// ───────────────────────────── Entrée (modes Confirmation / Les deux) ─────────────────────────────
 if entrySignal
     isLong = dir == 1
     buf    = slBufAtr * atr
@@ -203,14 +305,11 @@ if entrySignal
     sl     = isLong ? slRef - buf : slRef + buf
     entry  = close
     risk   = math.abs(entry - sl)
-    float tp = switch tpMode
-        "Ratio R:R"      => isLong ? entry + risk * rrTarget : entry - risk * rrTarget
-        "Extension Fibo" => fibLevel(orig, impEnd, -tpExt)
-        => impEnd
+    tp     = calcTP(isLong, entry, risk, orig, impEnd)
     reward = isLong ? tp - entry : entry - tp
 
     if risk > 0 and reward / risk >= minRR
-        qty = math.floor(strategy.equity * riskPct / 100 / (risk * syminfo.pointvalue) / qtyStep) * qtyStep
+        qty = calcQty(risk)
         if qty > 0
             id = isLong ? "Achat" : "Vente"
             strategy.entry(id, isLong ? strategy.long : strategy.short, qty = qty)
@@ -225,6 +324,9 @@ if entrySignal
     dir := 0  // setup consommé
 
 if cancel
+    if pending
+        strategy.cancel(dir == 1 ? "Achat" : "Vente")
+        pending := false
     dir := 0
     if showFibo and not na(zoneBox)
         box.set_bgcolor(zoneBox, color.new(color.gray, 85))
@@ -242,12 +344,15 @@ if dir != 0 and showFibo
     box.set_top(zoneBox, math.max(zA, zB))
     box.set_bottom(zoneBox, math.min(zA, zB))
     box.set_right(zoneBox, bar_index)
+    box.set_text(zoneBox, str.format("{0} – {1}", fibA, fibB) + (confKind != "" ? " + " + confKind : ""))
 
 // ───────────────────────────── Tableau d'état ─────────────────────────────
 var table panel = table.new(position.top_right, 2, 2, bgcolor = color.new(color.black, 80), border_width = 1)
 if barstate.islast
     sens   = dir == 1 ? "Achat" : dir == -1 ? "Vente" : "—"
-    status = dir == 0 ? "Attente d'un MSS" : not touched ? "MSS ✓ → attente du retest" : "Retest ✓ → attente du FVG"
+    status = dir == 0 ? "Attente d'un MSS" :
+         entryMode == MODE_CONF ? (na(confEdge) ? "MSS ✓ → pas de FVG/OB dans la zone" : "Ordre limite " + str.tostring(confEdge, format.mintick) + " (" + confKind + ")") :
+         not touched ? "MSS ✓ → attente du retest" : "Retest ✓ → attente du FVG"
     table.cell(panel, 0, 0, "Sens", text_color = color.white)
     table.cell(panel, 1, 0, sens, text_color = dir == 1 ? colBull : dir == -1 ? colBear : color.white)
     table.cell(panel, 0, 1, "Étape", text_color = color.white)
